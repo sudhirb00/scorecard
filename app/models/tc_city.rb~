@@ -1,0 +1,6 @@
+class TcCity < ActiveRecord::Base
+  self.table_name = 'tc_city'
+  self.primary_key = "city_id"	
+  has_one :est_hotsearch
+
+end

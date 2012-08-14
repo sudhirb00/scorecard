@@ -1,0 +1,9 @@
+<h1>Hot Searches</h1>
+
+got data : <%= @data.length %>
+
+<%=
+
+@data.each { |month_data| print month_data.inspect + "<br/>\n" } 
+
+%>

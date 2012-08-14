@@ -1,0 +1,14 @@
+<h1>Hot Searches v0.2</h1>
+
+got data : <%= @cities.length %>
+
+<% @cities.each { | city_arr | %>
+
+   <%= city_arr.city_name  %>    
+
+   <%= city_arr.HotSearches.sum(:viewcount,  :conditions => [ ' insertdate > ? ', '2012-01-01'] ) %> <br/>
+
+
+<% }  %>
+
+
