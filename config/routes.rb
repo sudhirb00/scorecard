@@ -2,8 +2,14 @@ Scorecard::Application.routes.draw do
   get "search/index"
 
   get "demo/index"
+  get "demo/line"
+  get "demo/fc"
 
   get "home/index"
+  get "establishment/est_type"
+  get "establishment/est_type_by_city"
+
+  get "/establishment/est_type_city_locality"
 
 
   # The priority is based upon order of creation:

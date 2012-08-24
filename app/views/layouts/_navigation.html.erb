@@ -1,19 +1,25 @@
 <%= link_to "TC Scorecard", root_path, :class => 'brand' %>
-<ul class="nav">
-      <li>
+<ul class="nav" id="menu">
+      <li id="search">
         <%= link_to('Search', "/search/index")  %>
       </li>
 
-      <li>
-        <%= link_to('Page Views', "#") %>
+      <li id="establishments">
+        <%= link_to('Establishments', "/establishment/est_type") %>
       </li>
 
-  <li>
+  <li id="reviews">
     <%= link_to('Reviews', "#")  %>
   </li>
 
-  <li>
+  <li id="demo" class="dropdown" data-dropdown="dropdown">
     <%= link_to('Demo', "/demo/index")  %>
+    <ul class="dropdown-menu">
+      <li><a href="/demo/index" class="dropdown">Search</a></li>
+      <li class="divider"></li>
+      <li><a href="/demo/fc" class="dropdown">Cities</a></li>
+    </ul>
   </li>
+
 
 </ul>
