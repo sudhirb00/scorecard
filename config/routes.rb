@@ -1,4 +1,6 @@
 Scorecard::Application.routes.draw do
+  get "review/index"
+
   get "search/index"
 
   get "demo/index"
@@ -11,6 +13,9 @@ Scorecard::Application.routes.draw do
 
   get "/establishment/est_type_city_locality"
 
+  get "/review/monthly"
+  get "/review/reviews_by_month"
+  get "/review/review_details"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

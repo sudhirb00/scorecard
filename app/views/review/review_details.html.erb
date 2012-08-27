@@ -1,0 +1,59 @@
+<h2>Reviews on <%= params[:date] %></h2>
+
+<div id="chart_data" class="span12">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>User</th>
+      <th>Establishment</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Buzz Rating</th>
+      <th>Service Rating</th>
+      <th>Decor Rating</th>
+      <th>Timestamp</th>
+      <th>IP Address</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <% count_total = 0 %>
+    <% @reviews_daily_data.each { | data | %>
+        <tr>
+          <td>
+            <%= raw "<a href='mailto:#{data.rev_user_email}'>#{data.rev_user_name}</a> (<a href='http://timescity.com/profile/#{data.rev_user_id}'>#{data.rev_user_id})</a>" %>
+          </td>
+          <td>
+            <%= data.rev_estname %>
+            <% count_total += 1 %>
+          </td>
+
+          <td>
+            <%= data.rev_title  %>
+          </td>
+          <td>
+            <%= data.rev_desc  %>
+          </td>
+          <td>
+            <%= data.rev_rate_1  %>
+          </td>
+          <td>
+            <%= data.rev_rate_2  %>
+          </td>
+          <td>
+            <%= data.rev_rate_3  %>
+          </td>
+          <td>
+            <%= data.insertdate  %>
+          </td>
+
+          <td>
+            <%= data.IP  %>
+          </td>
+
+        </tr>
+
+    <%  } %>
+    </tbody>
+  </table>
+</div>

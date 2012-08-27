@@ -8,7 +8,9 @@ class ApplicationController < ActionController::Base
 
   # @return [String]
   def self.data_to_xml
-    "<graph caption='Monthly Unit Sales' subCaption = 'sub title' xAxisName='Month' yAxisName='Units'   \
+    "<graph caption='Monthly Unit Sales'
+          rotateNames = '1',
+          subCaption = 'sub title' xAxisName='Month' yAxisName='Units'   \
           showNames='1' decimalPrecision='0' formatNumberScale='0'>  \
     <set name='Jan' value='462' color='AFD8F8' />       \
     <set name='Feb' value='857' color='F6BD0F' />       \
@@ -30,6 +32,7 @@ class ApplicationController < ActionController::Base
     xml = Builder::XmlMarkup.new()
     xml.graph(:caption=>caption, :subCaption=>subcaption,
               :showNames=>'1', :decimalPrecision=>'0',
+              :rotateNames => '1',
               :formatNumberScale=>'0',
               :numberSuffix=>'',
               :pieYScale => 60,

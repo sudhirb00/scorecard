@@ -1,5 +1,5 @@
 
-<div id="chartdiv" class="span10">
+<div id="chartdiv" class="span9">
   Timescity Chart.
 
 </div>     <!- end of chartdiv ->
@@ -40,7 +40,7 @@
 
 
 <script type="text/javascript">
-    var chart = new FusionCharts("/assets/fusionCharts/FCF_Column3D.swf", "ChartId", <%= PIE_CHARTS_WIDTH %>, <%= PIE_CHARTS_HEIGHT %>);
+    var chart = new FusionCharts("/assets/fusionCharts/FCF_Pie3D.swf", "ChartId", <%= PIE_CHARTS_WIDTH %>, <%= PIE_CHARTS_HEIGHT %>);
     chart.setDataXML('<%= raw @str_xml %>');
 
 
