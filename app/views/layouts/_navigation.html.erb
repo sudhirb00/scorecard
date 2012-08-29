@@ -1,11 +1,25 @@
-<%= link_to "TC Scorecard", root_path, :class => 'brand' %>
-<ul class="nav" id="menu">
+
+
+<div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <ul class="nav">
+
+
+        <%= link_to "TC Scorecard", root_path, :class => 'brand' %>
+
       <li id="search">
         <%= link_to('Search', "/search/index")  %>
       </li>
 
-      <li id="establishments">
-        <%= link_to('Establishments', "/establishment/est_type") %>
+      <li id="establishments" class="dropdown" data-dropdown="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Establishments<b class="caret"></b></a>
+
+        <ul class="dropdown-menu">
+          <li><a href="/establishment/est_type" class="dropdown">Establishment Types</a></li>
+          <li><a href="/establishment/page_views" class="dropdown">Page Views</a></li>
+          <li><a href="/establishment/gps_data" class="dropdown">GPS Data</a></li>
+        </ul>
       </li>
 
   <li id="reviews">
@@ -13,13 +27,23 @@
   </li>
 
   <li id="demo" class="dropdown" data-dropdown="dropdown">
-    <%= link_to('Demo', "/demo/index")  %>
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Demos<b class="caret"></b></a>
+
+
     <ul class="dropdown-menu">
       <li><a href="/demo/index" class="dropdown">Search</a></li>
       <li class="divider"></li>
       <li><a href="/demo/fc" class="dropdown">Cities</a></li>
     </ul>
+
   </li>
 
 
 </ul>
+
+    </div>
+  </div>
+</div>
+
+
+

@@ -1,0 +1,66 @@
+<h2>Establishments in <%= "#{params[:est_locality]}, #{params[:est_city_name]} Type #{params[:est_type]}"  %></h2>
+
+<h5>Click on column headers to sort, shift-click for multi sort</h5>
+
+
+<div id="chart_data_div" class="span12">
+  <table class="table table-striped" id="chart_data">
+    <thead>
+    <tr>
+      <th>Sr No.</th>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Locality</th>
+      <th>City</th>
+      <th>Critic Review</th>
+      <th>Created Date</th>
+      <th>Modified Date</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <% num_count = 0 %>
+    <% @est_data.each { | data | %>
+        <tr>
+          <td>
+            <%= num_count
+                num_count += 1
+            %>
+          </td>
+          <td>
+            <%= raw "<a href='http://timescity.com/#{data.est_guid}'>#{data.est_name}</a>" %>
+          </td>
+          <td>
+            <%= data.est_add1 %>
+          </td>
+
+          <td>
+            <%= data.est_loc_name  %>
+          </td>
+          <td>
+            <%= data.est_city_name  %>
+          </td>
+          <td>
+            <%= data.est_editor_review  %>
+          </td>
+          <td>
+            <%= data.created_date  %>
+          </td>
+          <td>
+            <%= data.modified_date  %>
+          </td>
+
+        </tr>
+
+    <%  } %>
+    </tbody>
+  </table>
+</div>
+
+<script language="javascript">
+    $(document).ready(function(){
+        $('#chart_data').dataTable({
+            "sDom": "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>"
+        });
+    });
+</script>

@@ -28,30 +28,41 @@ class ApplicationController < ActionController::Base
   end
 
 
-  def self.generate_xml (caption='', subcaption='', link_url = nil, hoverText, xmldata)
-    xml = Builder::XmlMarkup.new()
-    xml.graph(:caption=>caption, :subCaption=>subcaption,
-              :showNames=>'1', :decimalPrecision=>'0',
-              :rotateNames => '1',
-              :formatNumberScale=>'0',
-              :numberSuffix=>'',
-              :pieYScale => 60,
-              # :bgSWF => '/assets/tc-logo.gif'
-              :bgColor => 'F1f1f1',
-              :pieRadius => 300,
-              :hoverCapSepChar => " - "
+  def self.generate_xml ( link_url = nil,  hoverText, xml_config
+            )
+    logger.debug(xml_config)
+    @chart_config =  nil
 
-              ) do
+    logger.debug("I am here")
+    logger.debug(@chart_config)
+
+    @chart_config =  DEFAULT_CHART_CONFIGS
+    logger.debug(@chart_config)
+
+    xml_config[:chartConfigs].each { | k,v | @chart_config [k] = v}
+
+    logger.debug(@chart_config)
+
+    xml = Builder::XmlMarkup.new()
+    xml.graph(@chart_config) do
 
      #defaults for various graphs
 
-      xmldata.each { |k,v|          xml.set(:name=>k,:value=>v,
+      xml_config[:xmlData].each { |k,v|          xml.set(:name=>k,:value=>v,
                     :link => "#{link_url}" + "#{k}",
                     :hoverText => "#{hoverText}" + "#{k}"
                         )
                     }
 
     end
+
+    #options.each { |k,v |
+
+    #  xml.graph["caption"] = 'v'
+
+    #}
+
+
     return xml
   end
 end

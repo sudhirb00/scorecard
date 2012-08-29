@@ -1,9 +1,11 @@
-<h2>Reviews on <%= params[:date] %></h2>
+<h2>Reviews as on <%= params[:date] %></h2>
+<h5>Click on column headers to sort, shift-click for multi sort</h5>
 
 <div id="chart_data" class="span12">
-  <table class="table table-striped">
+  <table class="table table-striped" id="review_data">
     <thead>
     <tr>
+      <th>Sr No.</th>
       <th>User</th>
       <th>Establishment</th>
       <th>Title</th>
@@ -17,9 +19,12 @@
     </thead>
     <tbody>
 
-    <% count_total = 0 %>
+    <% count_total = 1 %>
     <% @reviews_daily_data.each { | data | %>
         <tr>
+          <td>
+            <%= count_total %>
+          </td>
           <td>
             <%= raw "<a href='mailto:#{data.rev_user_email}'>#{data.rev_user_name}</a> (<a href='http://timescity.com/profile/#{data.rev_user_id}'>#{data.rev_user_id})</a>" %>
           </td>
@@ -57,3 +62,11 @@
     </tbody>
   </table>
 </div>
+
+<script language="javascript">
+$(document).ready(function(){
+$('#review_data').dataTable({
+    "sDom": "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>"
+});
+});
+</script>

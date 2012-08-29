@@ -10,17 +10,36 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+
+  <!-- DataTables CSS -->
+  <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.8.2/css/jquery.dataTables.css">
+
+  <!-- jQuery
+  <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js"></script>
+  -->
+
+  <!-- DataTables -->
+  <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.8.2/jquery.dataTables.min.js"></script>
+
   <%= yield(:head) %>
 </head>
 <body>
-<header class="navbar navbar-fixed-top">
-  <nav class="navbar-inner">
-    <div class="container">
+
+      <!-- Nav bar here -->
       <%= render 'layouts/navigation' %>
-    </div>
-  </nav>
-</header>
-<div id="main" role="main">
+
+      <div id="wait_div" style="display:none;">
+
+      <div class="progress">
+             <div>   <p>Please wait ...</p>   </div>
+        <div class="bar"
+             style="width: 60%;"></div>
+      </div>
+      </div>
+
+
+
+      <div id="main" role="main">
   <div class="container">
     <div class="content">
       <div class="row-fluid">
@@ -38,6 +57,8 @@
       </footer>
     </div>
   </div> <!--! end of .container -->
+
+
 </div> <!--! end of #main -->
 </body>
 </html>

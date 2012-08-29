@@ -17,6 +17,12 @@ Scorecard::Application.routes.draw do
   get "/review/reviews_by_month"
   get "/review/review_details"
 
+  get "/establishment/est_locality_details"
+  get "/establishment/page_views"
+  get "/establishment/gps_data"
+
+  get "/establishment/gps_data_by_city"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
