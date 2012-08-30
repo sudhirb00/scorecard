@@ -2,11 +2,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   require 'active_support/builder'
 
-  def self.hello
-    "Hello world"
-  end
-
-  # @return [String]
   def self.data_to_xml
     "<graph caption='Monthly Unit Sales'
           rotateNames = '1',
@@ -39,7 +34,9 @@ class ApplicationController < ActionController::Base
     @chart_config =  DEFAULT_CHART_CONFIGS
     logger.debug(@chart_config)
 
-    xml_config[:chartConfigs].each { | k,v | @chart_config [k] = v}
+    xml_config[:chartConfigs].each do |k, v|
+      @chart_config[k] = v
+    end
 
     logger.debug(@chart_config)
 
@@ -48,7 +45,7 @@ class ApplicationController < ActionController::Base
 
      #defaults for various graphs
 
-      xml_config[:xmlData].each { |k,v|          xml.set(:name=>k,:value=>v,
+      xml_config[:xmlData].each { |k,v|          xml.set(:name=>format_xAxis(k),:value=>v,
                     :link => "#{link_url}" + "#{k}",
                     :hoverText => "#{hoverText}" + "#{k}"
                         )
@@ -64,5 +61,25 @@ class ApplicationController < ActionController::Base
 
 
     return xml
+  end
+
+  def self.format_xAxis(str)
+      @parts = str.split("/");
+      logger.debug(@parts.to_yaml)
+      logger.debug(@parts[1])
+      if @parts.length == 2
+        str = "#{short_month_name(@parts[1].to_i)} #{@parts[0]}"
+      elsif @parts.length == 3
+        str = "#{short_month_name(@parts[1].to_i)} #{@parts[2]}, #{@parts[0]}"
+      end
+    str
+  end
+
+MONTHS = { 1 => "Jan", 2 => "Feb", 3 => "Mar", 4 => "Apr",
+           5 => "May", 6 => "Jun", 7 => "Jul", 8 => "Aug",
+           9 => "Sep", 10 => "Oct", 11 => "Nov", 12 => "Dec"
+}
+  def self.short_month_name (month_num)
+    MONTHS[month_num]
   end
 end
