@@ -1,0 +1,22 @@
+<%=  @est_data.to_yaml %>
+
+
+<%=  @str_xml.to_yaml %>
+
+
+<%= render_hello %>
+
+
+<%= render_tc_chart( '')     %>
+
+
+<OBJECT classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+        codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0"
+        id="Column3D" />
+<param name="quality" value="high" />
+<embed src="/assets/fusionCharts/FCF_Column3D.swf"
+       flashVars="&dataURL=/assets/data/data.xml&chartWidth=300&chartHeight=250"
+       quality="high" width="300" height="250" name="Column3D"
+       type="application/x-shockwave-flash"
+       pluginspage="http://www.macromedia.com/go/getflashplayer" />
+</object>
