@@ -49,18 +49,18 @@ class EstablishmentController < ApplicationController
   def est_type_city_locality
 
     add_breadcrumb "Establishments", "/establishment/est_type"
-
     add_breadcrumb "Establishments by Type", "/establishment/est_type_by_city?est_type=#{params[:est_type]}"
-
     add_breadcrumb "Establishments by Locality", "/establishment/est_type_city_locality"
+
 
     @est_data = Establishment.group(:est_loc_name).count(
         :conditions => "status = 1 and est_which_type = '#{params[:est_type]}'
                         and est_city_name = '#{params[:est_city]}'")
     @est_data = @est_data.sort_by { |k,v| v }.reverse
 
+    top_rows = params[:top_rows].nil? ? 20 : params[:top_rows]
     # select only top 5 for now.
-    @est_data = @est_data[1..20]
+    @est_data = @est_data[1..top_rows.to_i]
 
     @str_xml = EstablishmentController.generate_xml(
               "/establishment/est_locality_details?est_type=#{params[:est_type]}&est_city_name=#{params[:est_city]}&est_locality=",
@@ -69,7 +69,7 @@ class EstablishmentController < ApplicationController
                   :xmlData => @est_data,
                   :chartConfigs => {
                       :caption  => "Establishment Types - #{params[:est_type]}",
-                      :subCaption => "By City"
+                      :subCaption => "By Locality in #{params[:est_city]} - Showing Top #{top_rows}"
 
                   }
               }
@@ -104,12 +104,15 @@ class EstablishmentController < ApplicationController
 
     @est_data = LogAccess.group("date_format(log_time, '%Y/%m/%d')").count
 
-    @str_xml = EstablishmentController.generate_xml("Number of Page Views",
-                                                    '(For Establishment Daily)',
-                                                    '/establishment/page_views_for_day?date=',
+    @str_xml = EstablishmentController.generate_xml('/establishment/page_views_for_day?date=',
                                                     "Date : ",
-                                                    @est_data
-                                                    )
+                                                    {:xmlData => @est_data,
+                                                     :chartConfigs => {:caption => "Number of Page Views",
+                                                                       :subCaption => "For Establishments Daily",
+                                                                       :pieRadius => 300
+                                                     }
+                                                    }
+                                              )
 
 
   end
@@ -126,8 +129,8 @@ class EstablishmentController < ApplicationController
                                                     "Establishments ",
                                                     {:xmlData => @est_data,
                                                      :chartConfigs => {:caption => "Establishments",
-                                                                       :subCaption => "With GPS Coordinates",
-                                                                       :pieRadius => 300
+                                                                       :subCaption => "GPS Coordinates Data",
+                                                                       :pieRadius => 150
                                                      }
                                                     }
                                             )
@@ -145,7 +148,7 @@ class EstablishmentController < ApplicationController
     @est_without_gps = Establishment.group(:est_city_name).count(:conditions => "est_gps_cood = ''")
     @est_without_gps = @est_without_gps.sort_by { |k,v| v }.reverse
     @str_xml1 = EstablishmentController.generate_xml(
-                                                     '/establishment/gps_by_city?gps_type=',
+                                                    '#',# '/establishment/gps_by_city?gps_type=',
                                                      "Establishments ",
 
                                                   {:xmlData => @est_with_gps,
@@ -157,7 +160,7 @@ class EstablishmentController < ApplicationController
                                         )
 
     @str_xml2 = EstablishmentController.generate_xml(
-                                                     '/establishment/gps_by_city?gps_type=',
+                                                     '#', #/establishment/gps_by_city?gps_type=',
                                                      "Establishments ",
                                                      {:xmlData => @est_without_gps,
                                                       :chartConfigs => {:caption => "Establishments",

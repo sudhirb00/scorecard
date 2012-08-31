@@ -1,8 +1,11 @@
 
-<%= render :partial => 'show_top_links', :locals => { :page_link =>
-         "/establishment/est_type_city_locality?est_type=#{params[:est_type]}&est_city=#{params[:est_city]}" ,
-           :current_top => params[:top_rows]
-            } %>
+
+<%= render :partial => 'show_top_links',
+           :locals => { :page_link =>
+             "/user/index" ,
+              :current_top => params[:top_rows]
+} %>
+
 
 <div id="chartdiv" class="span9">
   Timescity Chart.
@@ -13,14 +16,14 @@
   <table class="table table-striped">
     <thead>
     <tr>
-      <th>Locality</th>
+      <th>Users YOB</th>
       <th>Count</th>
     </tr>
     </thead>
     <tbody>
 
     <% count_total = 0 %>
-    <% @est_data.each { | k, v | %>
+    <% @user_data.each { | k, v | %>
         <tr>
           <td>
             <%= k.blank? ? 'N/A' : k %>
@@ -42,12 +45,8 @@
   </table>
 </div>
 
-
 <script type="text/javascript">
     var chart = new FusionCharts("/assets/fusionCharts/<%= PIE_CHART_GRAPH_TYPE %>", "ChartId", <%= PIE_CHARTS_WIDTH %>, <%= PIE_CHARTS_HEIGHT %>);
     chart.setDataXML('<%= raw @str_xml %>');
-
-
     chart.render("chartdiv");
 </script>
-

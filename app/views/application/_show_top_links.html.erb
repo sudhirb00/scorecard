@@ -1,0 +1,18 @@
+<p>
+Show Top
+
+<%
+  [10, 20, 30, 40, 50, 100].each do |t_count|    %>
+
+   <%=
+   if (current_top.to_i == t_count)
+      raw "<b>#{t_count}</b> "
+   else
+       raw "<a href='#{page_link}&top_rows=#{t_count}'>#{t_count}</a>"
+    end
+   %>
+
+    <% end %>
+
+</p>
+

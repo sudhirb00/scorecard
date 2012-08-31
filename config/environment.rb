@@ -18,6 +18,7 @@ DEFAULT_CHART_CONFIGS = { :caption=>'Title', :subCaption=>"Sub Title",
     :showCanvasBg => 0,
     :bgColor => 'F1f1f1',
     :pieRadius => 200,
-    :hoverCapSepChar => " - " }
+    :hoverCapSepChar => " - ",
+}
 
 PIE_CHART_GRAPH_TYPE = "FCF_Doughnut2D.swf"

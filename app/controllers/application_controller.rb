@@ -25,31 +25,34 @@ class ApplicationController < ActionController::Base
 
   def self.generate_xml ( link_url = nil,  hoverText, xml_config
             )
-    logger.debug(xml_config)
     @chart_config =  nil
-
-    logger.debug("I am here")
-    logger.debug(@chart_config)
-
     @chart_config =  DEFAULT_CHART_CONFIGS
-    logger.debug(@chart_config)
 
     xml_config[:chartConfigs].each do |k, v|
       @chart_config[k] = v
     end
 
-    logger.debug(@chart_config)
-
     xml = Builder::XmlMarkup.new()
+    counter = 0
     xml.graph(@chart_config) do
 
      #defaults for various graphs
 
-      xml_config[:xmlData].each { |k,v|          xml.set(:name=>format_xAxis(k),:value=>v,
+      xml_config[:xmlData].each do  |k,v|
+
+        showNames = 1
+
+        if ! (@chart_config[:skipNames].nil?)
+          showNames = (counter % @chart_config[:skipNames]) == 0 ? '1' : '0'
+        end
+        xml.set(:name=>format_xAxis(k),:value=>v,
                     :link => "#{link_url}" + "#{k}",
-                    :hoverText => "#{hoverText}" + "#{k}"
-                        )
-                    }
+                    :hoverText => "#{hoverText}" + "#{k}" ,
+                    :showName => showNames
+                    )
+        counter += 1
+
+      end
 
     end
 

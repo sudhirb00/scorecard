@@ -38,7 +38,7 @@
 </div>
 
 <script type="text/javascript">
-    var chart = new FusionCharts("/assets/fusionCharts/<%= PIE_CHART_GRAPH_TYPE %>>", "ChartId", <%= PIE_CHARTS_WIDTH %>, <%= PIE_CHARTS_HEIGHT %>);
+    var chart = new FusionCharts("/assets/fusionCharts/<%= PIE_CHART_GRAPH_TYPE %>", "ChartId", <%= PIE_CHARTS_WIDTH %>, <%= PIE_CHARTS_HEIGHT %>);
     chart.setDataXML('<%= raw @str_xml %>');
     chart.render("chartdiv");
 </script>

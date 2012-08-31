@@ -10,8 +10,11 @@ class ReviewController < ApplicationController
                                                     '/review/reviews_by_month?month=',
                                                     "Number of Reviews in ",
         {:xmlData =>  @reviews_monthly_data,
-         :chartConfigs => {:caption => "Monthly Reviews Created",
-                           :subCaption => "(For Each Month)",
+         :chartConfigs => { :caption => "Monthly Reviews Created",
+                            :subCaption => "(For Each Month)",
+                            :xAxisName => "Months",
+                            :yAxisName => "Number of Reviews",
+                            :skipNames => 3
          }
         }
 
@@ -39,7 +42,8 @@ class ReviewController < ApplicationController
                                       :caption => "Daily Reviews created in the Month",
                                       :subCaption => "For the month of : #{params[:month]}",
                                       :xAxisName => "Date Range",
-                                      :yAxisName => "Number of Reviews"
+                                      :yAxisName => "Number of Reviews",
+                                      :skipNames => 7
                                      }
                                 }
 
