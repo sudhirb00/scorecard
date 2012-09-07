@@ -61,9 +61,9 @@ class ApplicationController < ActionController::Base
     #  xml.graph["caption"] = 'v'
 
     #}
-
-
-    return xml
+    ret_val = xml.to_s
+    ret_val = ret_val.gsub(/[']/, '\\\\\'')
+    return ret_val
   end
 
   def self.format_xAxis(str)

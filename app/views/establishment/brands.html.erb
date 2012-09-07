@@ -1,5 +1,8 @@
-<h2 class="page-header">Establishment Categories</h2>
 
+<%= render :partial => 'show_top_links', :locals => { :page_link =>
+                                                              "/establishment/brands?" ,
+                                                      :current_top => params[:top_rows]
+} %>
 
 <div id="chartdiv" class="span9">
   Timescity Chart.
@@ -10,7 +13,7 @@
   <table class="table table-striped">
     <thead>
     <tr>
-      <th>Establishment Type</th>
+      <th>Chain</th>
       <th>Count</th>
     </tr>
     </thead>
@@ -20,7 +23,7 @@
     <% @est_data.each { | k, v | %>
         <tr>
           <td>
-            <a href='<%= "#{deep_link}#{k}" %>'><%= k.blank? ? 'N/A' : k %> </a>
+            <a href="<%=  "#{@dive_link}#{k}" %>"><%= k.blank? ? 'N/A' : k %></a>
           </td>
           <td style="text-align: right;">
             <%= v %>
@@ -39,8 +42,12 @@
   </table>
 </div>
 
+
 <script type="text/javascript">
     var chart = new FusionCharts("/assets/fusionCharts/<%= PIE_CHART_GRAPH_TYPE %>", "ChartId", <%= PIE_CHARTS_WIDTH %>, <%= PIE_CHARTS_HEIGHT %>);
     chart.setDataXML('<%= raw @str_xml %>');
+
+
     chart.render("chartdiv");
 </script>
+

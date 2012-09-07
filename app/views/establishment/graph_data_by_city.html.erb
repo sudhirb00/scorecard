@@ -20,7 +20,7 @@
     <tbody>
 
     <% count_total = 0 %>
-    <% @est_with_gps.each { | k, v | %>
+    <% @est_with_data.each { | k, v | %>
         <tr>
           <td>
             <%= k.blank? ? 'N/A' : k %>
@@ -53,7 +53,7 @@
     <tbody>
 
     <% count_total2 = 0 %>
-    <% @est_without_gps.each { | k, v | %>
+    <% @est_without_data.each { | k, v | %>
         <tr>
           <td>
             <%= k.blank? ? 'N/A' : k %>

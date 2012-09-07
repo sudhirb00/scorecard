@@ -1,3 +1,4 @@
+<h2 class="page-header" ><%= page_header %>    </h2>
 
 <%= render :partial => 'show_top_links', :locals => { :page_link =>
          "/establishment/est_type_city_locality?est_type=#{params[:est_type]}&est_city=#{params[:est_city]}" ,
@@ -23,7 +24,7 @@
     <% @est_data.each { | k, v | %>
         <tr>
           <td>
-            <%= k.blank? ? 'N/A' : k %>
+            <a href='<%= "#{deep_link}#{k}" %>'><%= k.blank? ? 'N/A' : k %> </a>
           </td>
           <td style="text-align: right;">
             <%= v %>

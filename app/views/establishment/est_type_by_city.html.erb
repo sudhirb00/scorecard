@@ -1,3 +1,4 @@
+<h2 class="page-header"><%= page_header %></h2>
 
 <div id="chartdiv" class="span9">
   Timescity Chart.
@@ -18,7 +19,7 @@
   <% @est_data.each { | k, v | %>
             <tr>
               <td>
-                <%= k.blank? ? 'N/A' : k %>
+                <a href='<%= "#{deep_link}#{k}" %>'><%= k.blank? ? 'N/A' : k %> </a>
               </td>
               <td style="text-align: right;">
                 <%= v %>
