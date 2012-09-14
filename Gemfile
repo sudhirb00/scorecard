@@ -9,8 +9,8 @@ gem 'sqlite3'
 
 gem 'mysql2'
 
-gem 'rmagick', :require => false
-gem 'gruff'
+gem 'execjs'
+gem 'therubyracer'
 
 gem 'awesome_print'
 gem 'bootstrap-sass'
