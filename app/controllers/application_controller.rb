@@ -68,8 +68,6 @@ class ApplicationController < ActionController::Base
 
   def self.format_xAxis(str)
       @parts = str.split("/");
-      logger.debug(@parts.to_yaml)
-      logger.debug(@parts[1])
       if @parts.length == 2
         str = "#{short_month_name(@parts[1].to_i)} #{@parts[0]}"
       elsif @parts.length == 3

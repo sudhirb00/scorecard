@@ -13,8 +13,8 @@ class EstablishmentController < ApplicationController
                                                         :xmlData => @est_data,
                                                         :chartConfigs => {
                                                             :caption  => "Establishments Types",
-                                                            :subCaption => "Across all Cities"
-
+                                                            :subCaption => "Across all Cities",
+                                                            :pieRadius => 200  
                                                         }
                                                     }
                                                   )
@@ -38,8 +38,8 @@ class EstablishmentController < ApplicationController
                     :xmlData => @est_data,
                     :chartConfigs => {
                         :caption  => "Establishment Types - #{params[:est_type]}",
-                        :subCaption => "By City"
-
+                        :subCaption => "By City",
+                        :pieRadius => 200
                     }
                 }
     )
@@ -71,8 +71,8 @@ class EstablishmentController < ApplicationController
                   :xmlData => @est_data,
                   :chartConfigs => {
                       :caption  => "Establishment Types - #{params[:est_type]}",
-                      :subCaption => "By Locality in #{params[:est_city]} - Showing Top #{top_rows}"
-
+                      :subCaption => "By Locality in #{params[:est_city]} - Showing Top #{top_rows}",
+                      :pieRadius => 200  
                   }
               }
 

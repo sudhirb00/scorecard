@@ -12,7 +12,7 @@ add_breadcrumb "Home", :root_path
 
     @str_xml = ApplicationController.generate_xml(
         '/user/users_by_year?year=',
-        "Users with Yob ",
+        "Users with Year of Birth ",
         {:xmlData =>  @user_data,
          :chartConfigs => { :caption => "Users Count by Year of Birth",
                             :subCaption => "(Showing Top #{top_rows})",
