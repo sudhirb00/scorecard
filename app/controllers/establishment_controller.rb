@@ -1,9 +1,5 @@
 class EstablishmentController < ApplicationController
   add_breadcrumb "Home", :root_path
-  REALM = "Enter password for Timescity Scorecard"
-#  require_relative "./authenticate_data.rb" 
- USERS = {
-         "tcity" => Digest::MD5.hexdigest(["tcity",REALM,"notvalid"].join(":"))}  #ha1 digest password
   
   before_filter :authenticate
 
@@ -237,12 +233,6 @@ class EstablishmentController < ApplicationController
 
   end
 
-  private
-    def authenticate
-      authenticate_or_request_with_http_digest(REALM) do |username|
-        USERS[username]
-      end
-    end
 
 end
 

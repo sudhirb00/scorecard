@@ -23,7 +23,7 @@
     <% @est_data.each { | k, v | %>
         <tr>
           <td>
-            <a href="<%=  "#{@dive_link}#{k}" %>"><%= k.blank? ? 'N/A' : k %></a>
+            <a href="<%=  "#{@dive_link}#{encode_url(k)}" %>"><%= k.blank? ? 'N/A' : k %></a>
           </td>
           <td style="text-align: right;">
             <%= v %>

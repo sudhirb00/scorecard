@@ -1,9 +1,5 @@
 class DataController < ApplicationController
   add_breadcrumb "Home", :root_path
-  REALM = "Enter password for Timescity Scorecard"
-#  require_relative "./authenticate_data.rb" 
- USERS = {
-         "tcity" => Digest::MD5.hexdigest(["tcity",REALM,"notvalid"].join(":"))}  #ha1 digest password
   
   before_filter :authenticate
   
@@ -159,7 +155,7 @@ class DataController < ApplicationController
                                                   {:xmlData => @est_with_data,
                                                    :chartConfigs => {:caption => "Establishments",
                                                                      :subCaption => "With #{data_hash[:data_name]}",
-                                                                     :pieRadius => 125
+                                                                     :pieRadius => 100
                                                                     }
                                                   }
                                         )
@@ -170,7 +166,7 @@ class DataController < ApplicationController
                                                      {:xmlData => @est_without_data,
                                                       :chartConfigs => {:caption => "Establishments",
                                                                         :subCaption => "Without #{data_hash[:data_name]}",
-                                                                        :pieRadius => 125
+                                                                        :pieRadius => 100
                                                       }
                                                      }
                                               )
@@ -208,7 +204,7 @@ class DataController < ApplicationController
                                                   {:xmlData => @est_with_data,
                                                    :chartConfigs => {:caption => "Establishments in #{params[:city_name]}",
                                                                      :subCaption => "With #{data_hash[:data_name]} - Showing Top #{top_rows}",
-                                                                     :pieRadius => 125
+                                                                     :pieRadius => 100
                                                                     }
                                                   }
                                         )
@@ -219,7 +215,7 @@ class DataController < ApplicationController
                                                      {:xmlData => @est_without_data,
                                                       :chartConfigs => {:caption => "Establishments in #{params[:city_name]}",
                                                                         :subCaption => "Without #{data_hash[:data_name]} - Showing Top #{top_rows}",
-                                                                        :pieRadius => 125
+                                                                        :pieRadius => 100
                                                       }
                                                      }
                                               )
@@ -251,11 +247,5 @@ class DataController < ApplicationController
     
     end
     
-    private
-      def authenticate
-        authenticate_or_request_with_http_digest(REALM) do |username|
-           USERS[username]
-        end
-      end
       
 end

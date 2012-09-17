@@ -1,10 +1,5 @@
 class UserController < ApplicationController
-add_breadcrumb "Home", :root_path
-  REALM = "Enter password for Timescity Scorecard"
-#  require_relative "./authenticate_data.rb" 
- USERS = {
-         "tcity" => Digest::MD5.hexdigest(["tcity",REALM,"notvalid"].join(":"))}  #ha1 digest password
-  
+  add_breadcrumb "Home", :root_path
   before_filter :authenticate
 
   def index
@@ -17,7 +12,7 @@ add_breadcrumb "Home", :root_path
     # @user_data = @user_data[1..top_rows.to_i]
 
     @str_xml = ApplicationController.generate_xml(
-        '/user/users_by_year?year=',
+        '#',
         "Users with Year of Birth ",
         {:xmlData =>  @user_data,
          :chartConfigs => { :caption => "Users Count by Year of Birth",
@@ -31,12 +26,5 @@ add_breadcrumb "Home", :root_path
     )
 
   end
-
-  private
-    def authenticate
-      authenticate_or_request_with_http_digest(REALM) do |username|
-        USERS[username]
-      end
-    end
 
 end
