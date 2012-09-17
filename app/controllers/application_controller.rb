@@ -83,4 +83,12 @@ MONTHS = { 1 => "Jan", 2 => "Feb", 3 => "Mar", 4 => "Apr",
   def self.short_month_name (month_num)
     MONTHS[month_num]
   end
+  
+  private
+    def authenticate
+      authenticate_or_request_with_http_digest(TC_REALM) do |username|
+         AUTHORIZED_USERS[username]
+      end
+    end
+ 
 end
