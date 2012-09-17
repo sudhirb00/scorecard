@@ -5,7 +5,7 @@ class DataController < ApplicationController
   USERS = {
            "tcity" => Digest::MD5.hexdigest(["tcity",REALM,"xxxx"].join(":"))}  #ha1 digest password
   
-  before_filter :authenticate, :except => [:index]
+  before_filter :authenticate
   
   @@MINER_HASH = {
   :critic_reviews => {

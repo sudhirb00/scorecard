@@ -5,7 +5,7 @@ class ReviewController < ApplicationController
   USERS = {
            "tcity" => Digest::MD5.hexdigest(["tcity",REALM,"xxxx"].join(":"))}  #ha1 digest password
   
-  before_filter :authenticate, :except => [:index]
+  before_filter :authenticate
 
   def index
 
@@ -129,5 +129,12 @@ class ReviewController < ApplicationController
     render :template => "establishment/graph_data_by_city"
 
   end
+
+  private
+    def authenticate
+      authenticate_or_request_with_http_digest(REALM) do |username|
+        USERS[username]
+      end
+    end
 
 end
