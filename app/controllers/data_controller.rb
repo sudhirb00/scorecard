@@ -1,5 +1,11 @@
 class DataController < ApplicationController
   add_breadcrumb "Home", :root_path
+  REALM = "Enter password for Timescity Scorecard"
+  USERS = {"dhh" => "secret", #plain text password
+           "dap" => Digest::MD5.hexdigest(["dap",REALM,"secret"].join(":"))}  #ha1 digest password
+  
+  before_filter :authenticate, :except => [:index]
+  
   @@MINER_HASH = {
   :critic_reviews => {
         :condition_with_data =>  "est_editor_review != ''",
@@ -10,15 +16,56 @@ class DataController < ApplicationController
         :deep_link => '/data/data_by_city'
       },
 
-  :gps_data => {
-        :condition_with_data =>  "est_gps_cood != ''",
-        :condition_without_data => "est_gps_cood = '' or est_gps_cood is NULL" ,
-        :bread_crumb => ["GPS Data", "/data/gps_data"],
-        :bread_crumb_city => ["By City", "/data/data_by_city"],
-        :data_name => "GPS Data",
-        :deep_link => '/data/data_by_city'
-      }
+      :gps_data => {
+            :condition_with_data =>  "est_gps_cood != ''",
+            :condition_without_data => "est_gps_cood = '' or est_gps_cood is NULL" ,
+            :bread_crumb => ["GPS Data", "/data/gps_data"],
+            :bread_crumb_city => ["By City", "/data/data_by_city"],
+            :data_name => "GPS Data",
+            :deep_link => '/data/data_by_city'
+          },
+
+      :phone_data => {
+            :condition_with_data =>  "est_phone != ''",
+            :condition_without_data => "est_phone = '' or est_phone is NULL" ,
+            :bread_crumb => ["Phone Data", "/data/phone_data"],
+            :bread_crumb_city => ["By City", "/data/data_by_city"],
+            :data_name => "Phone Data",
+            :deep_link => '/data/data_by_city'
+          },
       
+      :price_data => {
+            :condition_with_data =>  "est_two_price != ''",
+            :condition_without_data => "est_two_price = '' or est_two_price is NULL" ,
+            :bread_crumb => ["Price Data", "/data/price_data"],
+            :bread_crumb_city => ["By City", "/data/data_by_city"],
+            :data_name => "Price Data",
+            :deep_link => '/data/data_by_city'
+          },
+      :services_data => {
+            :condition_with_data =>  "est_services_id != ''",
+            :condition_without_data => "est_services_id = '' or est_services_id is NULL" ,
+            :bread_crumb => ["Services Data", "/data/services_data"],
+            :bread_crumb_city => ["By City", "/data/data_by_city"],
+            :data_name => "Services Data",
+            :deep_link => '/data/data_by_city'
+          },
+      :features_data => {
+            :condition_with_data =>  "est_features_id != ''",
+            :condition_without_data => "est_features_id = '' or est_features_id is NULL" ,
+            :bread_crumb => ["Features Data", "/data/features_data"],
+            :bread_crumb_city => ["By City", "/data/data_by_city"],
+            :data_name => "Features Data",
+            :deep_link => '/data/data_by_city'
+          },
+      :cuisines_data => {
+            :condition_with_data =>  "est_cuisines != ''",
+            :condition_without_data => "est_cuisines = '' or est_cuisines is NULL" ,
+            :bread_crumb => ["Features Data", "/data/cuisines_data"],
+            :bread_crumb_city => ["By City", "/data/data_by_city"],
+            :data_name => "Cuisines Data",
+            :deep_link => '/data/data_by_city'
+          },
 
 
   }
@@ -59,6 +106,36 @@ class DataController < ApplicationController
   end
 
   def gps_data
+
+    show(:action => params[:action])
+
+  end
+
+  def phones_data
+
+    show(:action => params[:action])
+
+  end
+
+  def price_data
+
+    show(:action => params[:action])
+
+  end
+
+  def services_data
+
+    show(:action => params[:action])
+
+  end
+
+  def features_data
+
+    show(:action => params[:action])
+
+  end
+
+  def cuisines_data
 
     show(:action => params[:action])
 
@@ -173,5 +250,11 @@ class DataController < ApplicationController
     
     end
     
-
+    private
+      def authenticate
+        authenticate_or_request_with_http_digest(REALM) do |username|
+          USERS[username]
+        end
+      end
+      
 end
