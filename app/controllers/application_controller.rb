@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   require 'active_support/builder'
-
+  require 'cgi'
+  
   def self.data_to_xml
     "<graph caption='Monthly Unit Sales'
           rotateNames = '1',
