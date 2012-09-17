@@ -1,9 +1,9 @@
 class ReviewController < ApplicationController
   add_breadcrumb "Home", :root_path
   REALM = "Enter password for Timescity Scorecard"
-  # this should be changed on production
+#  require_relative "./authenticate_data.rb" 
   USERS = {
-           "tcity" => Digest::MD5.hexdigest(["tcity",REALM,"xxxx"].join(":"))}  #ha1 digest password
+         "tcity" => Digest::MD5.hexdigest(["tcity",REALM,"notvalid"].join(":"))}  #ha1 digest password
   
   before_filter :authenticate
 

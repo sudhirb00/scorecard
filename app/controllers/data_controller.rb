@@ -1,9 +1,9 @@
 class DataController < ApplicationController
   add_breadcrumb "Home", :root_path
   REALM = "Enter password for Timescity Scorecard"
-  # this should be changed on production
-  USERS = {
-           "tcity" => Digest::MD5.hexdigest(["tcity",REALM,"xxxx"].join(":"))}  #ha1 digest password
+#  require_relative "./authenticate_data.rb" 
+ USERS = {
+         "tcity" => Digest::MD5.hexdigest(["tcity",REALM,"notvalid"].join(":"))}  #ha1 digest password
   
   before_filter :authenticate
   
@@ -26,7 +26,7 @@ class DataController < ApplicationController
             :deep_link => '/data/data_by_city'
           },
 
-      :phone_data => {
+      :phones_data => {
             :condition_with_data =>  "est_phone != ''",
             :condition_without_data => "est_phone = '' or est_phone is NULL" ,
             :bread_crumb => ["Phone Data", "/data/phone_data"],
@@ -83,7 +83,7 @@ class DataController < ApplicationController
       @est_data = {"Not Having #{data_hash[:data_name]}" => @est_without_data,
                         "Having #{data_hash[:data_name]}" => @est_with_data}
                    
-      @str_xml = EstablishmentController.generate_xml( "#{data_hash[:deep_link]}?data=#{data[:action]}&data_type=",
+      @str_xml = DataController.generate_xml( "#{data_hash[:deep_link]}?data=#{data[:action]}&data_type=",
                                                       "#{data_hash[:data_name]} : ",
                                                       {:xmlData => @est_data,
                                                        :chartConfigs => {:caption => "Establishments",
@@ -254,7 +254,7 @@ class DataController < ApplicationController
     private
       def authenticate
         authenticate_or_request_with_http_digest(REALM) do |username|
-          USERS[username]
+           USERS[username]
         end
       end
       
