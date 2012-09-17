@@ -1,5 +1,10 @@
 class EstablishmentController < ApplicationController
   add_breadcrumb "Home", :root_path
+  REALM = "Enter password for Timescity Scorecard"
+  USERS = {
+           "tcity" => Digest::MD5.hexdigest(["dap",REALM,"xxxx"].join(":"))}  #ha1 digest password
+  
+  before_filter :authenticate, :except => [:index]
 
   def est_type
 

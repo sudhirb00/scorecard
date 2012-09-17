@@ -1,5 +1,11 @@
 class UserController < ApplicationController
 add_breadcrumb "Home", :root_path
+REALM = "Enter password for Timescity Scorecard"
+# this should be changed on production
+USERS = {
+         "tcity" => Digest::MD5.hexdigest(["tcity",REALM,"xxxx"].join(":"))}  #ha1 digest password
+  
+before_filter :authenticate, :except => [:index]
 
   def index
     add_breadcrumb "User", "/user/index"

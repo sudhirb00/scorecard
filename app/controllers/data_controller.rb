@@ -1,8 +1,8 @@
 class DataController < ApplicationController
   add_breadcrumb "Home", :root_path
   REALM = "Enter password for Timescity Scorecard"
-  USERS = {"dhh" => "secret", #plain text password
-           "dap" => Digest::MD5.hexdigest(["dap",REALM,"secret"].join(":"))}  #ha1 digest password
+  USERS = {
+           "tcity" => Digest::MD5.hexdigest(["dap",REALM,"tcity@dmin"].join(":"))}  #ha1 digest password
   
   before_filter :authenticate, :except => [:index]
   

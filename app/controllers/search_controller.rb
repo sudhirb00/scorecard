@@ -2,7 +2,7 @@ class SearchController < ApplicationController
   def index
       @cities = TcCity.all
       logger.info "Hello World"
-      # render :text => "Hello"
+      render :text => "Hello"
       # logger.debug @cities
       @cities.each { | city_arr |
 
