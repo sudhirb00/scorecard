@@ -47,7 +47,7 @@ class ApplicationController < ActionController::Base
           showNames = (counter % @chart_config[:skipNames]) == 0 ? '1' : '0'
         end
         xml.set(:name=>format_xAxis(k),:value=>v,
-                    :link => "#{link_url}" + "#{k}",
+                    :link => "#{CGI.escape(link_url)}" + "#{k}",
                     :hoverText => "#{hoverText}" + "#{k}" ,
                     :showName => showNames
                     )
@@ -62,6 +62,44 @@ class ApplicationController < ActionController::Base
     #  xml.graph["caption"] = 'v'
 
     #}
+    ret_val = xml.to_s
+    ret_val = ret_val.gsub(/[']/, '\\\\\'')
+    return ret_val
+  end
+
+  def self.generate_xml_v2 (xml_config)
+    
+    @chart_config =  nil
+    @chart_config =  DEFAULT_CHART_CONFIGS
+
+    xml_config[:chartConfigs].each do |k, v|
+      @chart_config[k] = v
+    end
+
+    logger.debug(xml_config)
+    
+    xml = Builder::XmlMarkup.new()
+    counter = 0
+    xml.graph(@chart_config) do
+
+      xml_config[:xmlData].each do  |xmlKey, xmlDataRow|
+        logger.debug(xmlDataRow)
+        showNames = 1
+        if ! (@chart_config[:skipNames].nil?)
+          showNames = (counter % @chart_config[:skipNames]) == 0 ? '1' : '0'
+        end
+        xml.set(:name=>xmlKey,
+                :value=>xmlDataRow[:value],
+                :link => "#{CGI.escape(xmlDataRow[:link])}",
+                :hoverText => "#{xmlDataRow[:hover_text]}" ,
+                :showName => showNames
+                    )
+        counter += 1
+
+      end
+
+    end
+
     ret_val = xml.to_s
     ret_val = ret_val.gsub(/[']/, '\\\\\'')
     return ret_val
