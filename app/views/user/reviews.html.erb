@@ -1,0 +1,52 @@
+
+
+<%= render :partial => 'show_top_links',
+           :locals => { :page_link =>
+             "/user/reviews?" ,
+              :current_top => params[:top_rows]
+} %>
+
+
+<div id="chartdiv" class="span9">
+  Timescity Chart.
+
+</div>     <!- end of chartdiv ->
+
+<div id="chart_data" class="span2">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Users with Reviews</th>
+      <th>Review Count</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <% count_total = 0 %>
+    <% @data_for_xml.each { | k, v | %>
+        <tr>
+          <td>
+              <a href="<%=  "#{deep_link}#{v[:id]}" %>" title="<%= "#{v[:hover_text]}" %>"><%= v[:key].blank? ? 'N/A' : v[:key] %></a>
+          </td>
+          <td style="text-align: right;">
+            <%= v[:value] %>
+            <% count_total += v[:value] %>
+          </td>
+        </tr>
+
+    <%  } %>
+    </tbody>
+    <thead>
+    <tr>
+      <th>Total</th>
+      <th style="text-align: right;"><%= count_total %></th>
+    </tr>
+    </thead>
+  </table>
+</div>
+
+<script type="text/javascript">
+    var chart = new FusionCharts("/assets/fusionCharts/<%= PIE_CHART_GRAPH_TYPE %>", "ChartId", <%= PIE_CHARTS_WIDTH %>, <%= PIE_CHARTS_HEIGHT %>);
+    chart.setDataXML('<%= raw @str_xml %>');
+    chart.render("chartdiv");
+</script>
