@@ -1,6 +1,7 @@
 Scorecard::Application.routes.draw do
 
   #match 'data/:data_name' => "data#show"
+  match "/user/reviews_by_user/:rev_user_name" => "user#reviews_by_user"
 
   match ':controller/:action'
 
