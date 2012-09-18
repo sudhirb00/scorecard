@@ -48,7 +48,7 @@ class UserController < ApplicationController
     @str_xml = ApplicationController.generate_xml_v2(
         {:xmlData =>  @data_for_xml,
          :chartConfigs => { :caption => "Users Review Count",
-                            :subCaption => "(Showing Top #{top_rows})",
+                            :subCaption => "(Showing Top #{top_rows}) Only Logged-in Users",
                             # :showNames => 0
                  }
         }
