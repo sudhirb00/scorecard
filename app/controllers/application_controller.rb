@@ -76,14 +76,12 @@ class ApplicationController < ActionController::Base
       @chart_config[k] = v
     end
 
-    logger.debug(xml_config)
     
     xml = Builder::XmlMarkup.new()
     counter = 0
     xml.graph(@chart_config) do
 
       xml_config[:xmlData].each do  |xmlKey, xmlDataRow|
-        logger.debug(xmlDataRow)
         showNames = 1
         if ! (@chart_config[:skipNames].nil?)
           showNames = (counter % @chart_config[:skipNames]) == 0 ? '1' : '0'

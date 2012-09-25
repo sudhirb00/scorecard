@@ -1,0 +1,56 @@
+
+
+
+<div id="chartdiv" class="span12">
+  Timescity Chart.
+
+</div>     <!- end of chartdiv ->
+<p>Click on above graph to see nested details below</p>
+
+<div id="chartdiv2" class="span12">
+  Timescity Chart 2.
+
+</div>     <!- end of chartdiv ->
+
+<script language="javascript">
+function updateXML(str, chart_id_to_update)
+{
+	//alert(str)
+	$.get(
+	    "/data/other_cuisine_data?cuisine=" + str,
+	    "{key:value}",
+	    function(data) {// alert(data); 
+		updateChartXML('chart1Id', data);
+		// alert('done');
+			},
+	    "html"
+	);
+}
+
+function showEstablishments(pc, sc)
+{
+	$.get(
+	    "/data/listings_by_cuisine?primary_cuisine=" + pc + "&secondary_cuisine=" + sc,
+	    "{key:value}",
+	    function(data) { alert(data); 
+		//updateChartXML('chart1Id', data);
+		// alert('done');
+			},
+	    "html"
+	);
+}
+</script>
+
+<script type="text/javascript">
+//    var chart = new FusionCharts("/assets/fusionCharts/<%= PIE_CHART_GRAPH_TYPE %>", "ChartId",800,400);
+	var chart1 = new FusionCharts("/assets/FusionCharts/FCF_Column3D.swf", "chartId", "1000", "400", "0", "1");		   			
+    chart1.setDataXML('<%= raw @str_xml %>');
+    chart1.render("chartdiv");
+</script>
+
+<script type="text/javascript">
+ //   var chart2 = new FusionCharts("/assets/fusionCharts/<%= PIE_CHART_GRAPH_TYPE %>", "chart1Id", 500, 500);
+	var chart2 = new FusionCharts("/assets/FusionCharts/FCF_Column3D.swf", "chart1Id", "1000", "400", "0", "1");		   			
+    chart2.setDataXML("<graph></graph>");
+    chart2.render("chartdiv2");
+</script>

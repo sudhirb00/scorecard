@@ -1,8 +1,14 @@
 class DataController < ApplicationController
   add_breadcrumb "Home", :root_path
   
-  before_filter :authenticate
+  before_filter :authenticate, :except => ["other_cuisine_data", "listings_by_cuisine"]
   
+        @@cuisine_data_hash = begin
+          YAML.load(File.open("cuisines_data.yml"))
+        rescue ArgumentError => e
+          puts "Could not parse YAML: #{e.message}"
+        end
+
   @@MINER_HASH = {
   :critic_reviews => {
         :condition_with_data =>  "est_editor_review != ''",
@@ -247,5 +253,122 @@ class DataController < ApplicationController
     
     end
     
+    def cuisines_relation
+
+      cuisine_data_hash = begin
+        YAML.load(File.open("cuisines_summary_data.yml"))
+      rescue ArgumentError => e
+        puts "Could not parse YAML: #{e.message}"
+      end
+
+      # top_rows = params[:top_rows].nil? ? 20 : params[:top_rows]
+      # cuisine_data = cuisine_data[0..top_rows.to_i]
+    
+      @data_for_xml = {}
+      cuisine_data_hash.each { |k,v |
+        logger.debug( "k: #{k} , v: #{v}" )
+        cuisine_master = Cuisine.first(:conditions => {:cui_id => k })
+        logger.debug(cuisine_master.to_yaml)
+        @data_for_xml [ cuisine_master.cuisines_name ] = {:key => cuisine_master.cui_id,
+          :value => v[:EstablishmentCount] ,
+          :hover_text => "#{cuisine_master.cuisines_name} #{cuisine_master.cuisines_desc}",
+          :link => %{javascript:updateXML("#{k}");},
+          # :id => reviewed_user.user_id
+        }
+      }
+      @data_for_xml = @data_for_xml.sort_by { |k,v| k }
+
       
+      @str_xml = ApplicationController.generate_xml_v2(
+          {:xmlData =>  @data_for_xml,
+           :chartConfigs => { :caption => "Establishment Cuisines",
+                              :subCaption => "Number of Establishments for Cuisines",
+                              :pieRadius => 100,
+                              :xAxisName => "Cuisines",
+                              :yAxisName => "Number of Establishments"
+                   }
+          }
+   )
+   # @str_xml2 = other_cuisine_data[ cuisine_data[0] ]
+   render :template => "data/multiple",
+   :locals =>
+     { :deep_link =>       "http://timescity.com/profile/",
+     }
+    end
+    
+    def other_cuisine_data (cuisine_id = nil)
+      
+       params[:cuisine] = cuisine_id if (! cuisine_id.nil?)
+        
+      cuisine_data_hash = begin
+        YAML.load(File.open("cuisines_summary_data.yml"))
+      rescue ArgumentError => e
+        puts "Could not parse YAML: #{e.message}"
+      end
+
+      cuisine_master_prev = Cuisine.first(:conditions => {:cui_id => params[:cuisine] })
+
+      #logger.debug(cuisine_data_hash[params[:cuisine]])
+      cuisine_data = cuisine_data_hash[params[:cuisine]][:OtherCuisines].sort_by { |k,v| k }
+      # top_rows = params[:top_rows].nil? ? 20 : params[:top_rows]
+      # cuisine_data = cuisine_data[0..top_rows.to_i]
+    
+      
+      @data_for_xml = {}
+      cuisine_data.each { |k,v |
+        logger.debug( "k: #{k} , v: #{v}" )
+        # skip this cuisine
+        next if (k == cuisine_master_prev.cuisines_name)
+        cuisine_master = Cuisine.first(:conditions => {:cuisines_name => k })
+        @data_for_xml [ cuisine_master.cuisines_name ] = {:key => cuisine_master.cuisines_name,
+          :value => v ,
+          :hover_text => "#{cuisine_master.cuisines_name} #{cuisine_master.cuisines_desc}",
+    	    :link => "/data/listings_by_cuisine?primary_cuisine=#{params[:cuisine]}&secondary_cuisine=#{cuisine_master.cui_id}",
+          # :id => reviewed_user.user_id
+        }
+      }
+  #    render :text => @data_for_xml.to_yaml
+
+      @str_xml = ApplicationController.generate_xml_v2(
+          {:xmlData =>  @data_for_xml,
+           :chartConfigs => { :caption => "Establishment Serving Other cuisines",
+                              :subCaption => "Which serve #{cuisine_master_prev.cuisines_name}",
+                              :pieRadius => 100,
+                              :xAxisName => "Cuisines",
+                              :yAxisName => "Number of Establishments"
+                    }
+          }
+   )
+      
+      
+      render :text => @str_xml
+    end  
+    
+    def listings_by_cuisine
+      # render :text => "pc : #{params[:primary_cuisine]}  sc #{params[:secondary_cuisine]}"
+
+      add_breadcrumb "Cuisine Relations", "/data/cuisines_relation"
+
+      pc_cuisine_master = Cuisine.first(:conditions => {:cui_id => params[:primary_cuisine]})
+      sc_cuisine_master = Cuisine.first(:conditions => {:cui_id => params[:secondary_cuisine] })
+      
+      this_cuisine_data = @@cuisine_data_hash[params[:primary_cuisine]]
+      # logger.debug(this_cuisine_data)
+      est_str = []
+      this_cuisine_data[:establishments].each { |est|
+        # logger.debug(est[:cuisines])
+          est_str << est[:id] if est[:cuisines].include?(params[:secondary_cuisine])
+        }
+    # render :text => str    
+    # logger.debug(est_str)
+    @est_data = Establishment.all( :conditions =>
+                                       "est_id in  (#{est_str.join(",")})" )
+
+    render :template => "establishment/est_short_details", :locals => {
+        :page_header =>
+            "Establishments Listings for the cuisines serving #{pc_cuisine_master.cuisines_name} & #{sc_cuisine_master.cuisines_name}"
+          }
+
+    end
+    
 end
