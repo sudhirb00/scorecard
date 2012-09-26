@@ -309,17 +309,18 @@ class DataController < ApplicationController
       cuisine_master_prev = Cuisine.first(:conditions => {:cui_id => params[:cuisine] })
 
       #logger.debug(cuisine_data_hash[params[:cuisine]])
-      cuisine_data = cuisine_data_hash[params[:cuisine]][:OtherCuisines].sort_by { |k,v| k }
       # top_rows = params[:top_rows].nil? ? 20 : params[:top_rows]
       # cuisine_data = cuisine_data[0..top_rows.to_i]
     
       
+      cuisine_data = cuisine_data_hash[params[:cuisine]][:OtherCuisines]
+
       @data_for_xml = {}
       cuisine_data.each { |k,v |
         logger.debug( "k: #{k} , v: #{v}" )
         # skip this cuisine
-        next if (k == cuisine_master_prev.cuisines_name)
-        cuisine_master = Cuisine.first(:conditions => {:cuisines_name => k })
+        next if (k == params[:cuisine].to_i)
+        cuisine_master = Cuisine.first(:conditions => {:cui_id => k })
         @data_for_xml [ cuisine_master.cuisines_name ] = {:key => cuisine_master.cuisines_name,
           :value => v ,
           :hover_text => "#{cuisine_master.cuisines_name} #{cuisine_master.cuisines_desc}",
@@ -327,8 +328,9 @@ class DataController < ApplicationController
           # :id => reviewed_user.user_id
         }
       }
-  #    render :text => @data_for_xml.to_yaml
 
+      @data_for_xml = @data_for_xml.sort_by { |k,v| k }
+      
       @str_xml = ApplicationController.generate_xml_v2(
           {:xmlData =>  @data_for_xml,
            :chartConfigs => { :caption => "Establishment Serving Other cuisines",
@@ -353,14 +355,14 @@ class DataController < ApplicationController
       sc_cuisine_master = Cuisine.first(:conditions => {:cui_id => params[:secondary_cuisine] })
       
       this_cuisine_data = @@cuisine_data_hash[params[:primary_cuisine]]
-      # logger.debug(this_cuisine_data)
+      logger.debug(this_cuisine_data)
       est_str = []
       this_cuisine_data[:establishments].each { |est|
-        # logger.debug(est[:cuisines])
+         logger.debug(est[:cuisines])
           est_str << est[:id] if est[:cuisines].include?(params[:secondary_cuisine])
         }
     # render :text => str    
-    # logger.debug(est_str)
+    logger.debug(est_str)
     @est_data = Establishment.all( :conditions =>
                                        "est_id in  (#{est_str.join(",")})" )
 
