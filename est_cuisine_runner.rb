@@ -90,7 +90,7 @@ log_message("we have collected enough data, now let's summarize this",2)
   otherCuisines.each { | key, value |
     log_message("key #{key} ", 5)
     next if (key.empty?)
-    otherCuisinesNames[@cuisine_map[key][:name]] = value
+    otherCuisinesNames[@cuisine_map[key][:id]] = value
       }
   
   
