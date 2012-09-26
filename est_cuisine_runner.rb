@@ -59,7 +59,7 @@ Establishment.all.each { |est|
 log_message("we have collected enough data, now let's summarize this",2)
 
 @cuisine_data.each { |key, data|
-  log_message("Processing for #{key}",3)
+  log_message("Processing for #{key}",4)
   est_with_this_cuisine = data[:establishments].length
   @cuisine_data[key][:est_count] = est_with_this_cuisine
    data[:establishments].each { | est|
