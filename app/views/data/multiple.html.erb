@@ -15,13 +15,13 @@
 <script language="javascript">
 function updateXML(str, chart_id_to_update)
 {
-	//alert(str)
+    $('#loading').show();
 	$.get(
 	    "/data/other_cuisine_data?cuisine=" + str,
 	    "{key:value}",
 	    function(data) {// alert(data); 
 		updateChartXML('chart1Id', data);
-		// alert('done');
+        $('#loading').hide();
 			},
 	    "html"
 	);
