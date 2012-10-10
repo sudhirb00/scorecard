@@ -5,12 +5,12 @@ class ReviewController < ApplicationController
   def index
 
     add_breadcrumb "Monthly Reviews", "/review/index"
-    @reviews_monthly_data = ReviewRating.group("date_format(insertdate, '%Y/%m')").count(:conditions => {:insertdate => '2011-01-01'..'2099-01-01'})
+    @monthly_data = ReviewRating.group("date_format(insertdate, '%Y/%m')").count(:conditions => {:insertdate => '2011-01-01'..'2099-01-01'})
 
     @str_xml = EstablishmentController.generate_xml(
                                                     '/review/reviews_by_month?month=',
                                                     "Number of Reviews in ",
-        {:xmlData =>  @reviews_monthly_data,
+        {:xmlData =>  @monthly_data,
          :chartConfigs => { :caption => "Monthly Reviews Created",
                             :subCaption => "(For Each Month)",
                             :xAxisName => "Months",

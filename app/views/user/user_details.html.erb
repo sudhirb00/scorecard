@@ -1,0 +1,73 @@
+<h2><%= page_header =%> <%= formatDate(params[:date]) %></h2>
+<h5>Click on column headers to sort, shift-click for multi sort</h5>
+
+<div id="chart_data" class="span12">
+  <table class="table table-striped" id="review_data">
+    <thead>
+    <tr>
+      <th>Sr No.</th>
+      <th>User</th>
+      <th>Name</th>
+      <th>User Type</th>
+      <th>Gender</th>
+      <th>Created Date</th>
+      <th>Modified Date</th>
+      <th>Last Login Date</th>
+      <th>Mobile no.</th>
+      <th>Image</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <% count_total = 1 %>
+    <% @user_data.each { | data | %>
+        <tr>
+          <td>
+            <%= count_total %>
+          </td>
+          <td>
+            <%= raw "<a href='mailto:#{data.user_email}'>#{data.user_name}</a> (<a href='http://timescity.com/profile/#{data.user_id}'>#{data.user_id})</a>" %>
+          </td>
+          <td>
+            <%= "#{data.user_title} #{data.user_fname} #{data.user_lname}" %>
+            <% count_total += 1 %>
+          </td>
+
+          <td>
+            <%= data.user_type  %>
+          </td>
+          <td>
+            <%= data.user_gender  %>
+          </td>
+          <td>
+            <%= data.created_date  %>
+          </td>
+          <td>
+            <%= data.modified_date  %>
+          </td>
+          <td>
+            <%= data.lastlogin  %>
+          </td>
+
+          <td>
+            <%= data.user_mobile_no  %>
+          </td>
+
+          <td>
+			  <% @img_path = (data.profileimage.nil?) ? '<img width="100" height="100" title="No Profile Image" alt="No Profile Image" src="http://st4.timescity.com/userprofile/user_no_image.jpg">' : "<img src='http://st4.timescity.com/userprofile/#{data.profileimage}' alt='#{data.user_fname} #{data.user_lname}'  title='#{data.user_fname} #{data.user_lname}'>"%>
+            <%=  raw @img_path %>
+          </td>
+        </tr>
+
+    <%  } %>
+    </tbody>
+  </table>
+</div>
+
+<script language="javascript">
+$(document).ready(function(){
+$('#review_data').dataTable({
+    "sDom": "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>"
+});
+});
+</script>

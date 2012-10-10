@@ -2,6 +2,125 @@ class UserController < ApplicationController
   add_breadcrumb "Home", :root_path
   before_filter :authenticate
 
+  def signups
+    add_breadcrumb "User", "/user/signups"
+    @monthly_data = User.group("date_format(created_date, '%Y/%m')").count(:conditions => {:created_date => '2011-01-01'..'2099-01-01'})
+
+    @str_xml = EstablishmentController.generate_xml(
+                                                    '/user/signups_by_month?month=',
+                                                    "Number of Signups in ",
+        {:xmlData =>  @monthly_data,
+         :chartConfigs => { :caption => "Monthly Signups",
+                            :subCaption => "(For Each Month)",
+                            :xAxisName => "Months",
+                            :yAxisName => "Number of Signups",
+                            :skipNames => 3
+         }
+        }
+      )
+      render :template => "review/index"
+  end
+
+  def signups_by_month
+
+    add_breadcrumb "Monthly Signups", "/user/signups"
+
+    add_breadcrumb "Daily Signups", "/user/signups_by_month"
+
+    @monthly_data = User.group("date_format(created_date, '%Y/%m/%d')").count(:conditions => "date_format(created_date, '%Y/%m') = '#{params[:month]}'")
+    @str_xml = EstablishmentController.generate_xml('/user/signup_details?date=',
+                                                    "Number of Signups on ",
+
+                                {:xmlData =>  @monthly_data,
+                                 :chartConfigs =>
+                                     {
+                                      :caption => "Daily Signups in the Month",
+                                      :subCaption => "For the month of : #{params[:month]}",
+                                      :xAxisName => "Date Range",
+                                      :yAxisName => "Number of Signups",
+                                      :skipNames => 7
+                                     }
+                                }
+
+    )
+    render :template => "review/index"
+
+  end
+
+  def signup_details
+
+    add_breadcrumb "Monthly Signups", "/user/signups"
+
+    add_breadcrumb "Daily Signups", "/user/signups_by_month?month=#{params[:date][0..6]}"
+
+    add_breadcrumb "Signup Data", "/user/signup_details"
+
+    @user_data = User.find(:all, :conditions => "date_format(created_date, '%Y/%m/%d') = '#{params[:date]}'")
+    #render :text => @reviews_daily_data.to_yaml
+
+    render :template => "user/user_details" , :locals => { :page_header => "User Signups on " }
+  end
+
+  def logins
+    add_breadcrumb "User", "/user/logins"
+    @monthly_data = User.group("date_format(lastlogin, '%Y/%m')").count(:conditions => {:lastlogin => '2011-01-01'..'2099-01-01'})
+
+    @str_xml = EstablishmentController.generate_xml(
+                                                    '/user/logins_by_month?month=',
+                                                    "Number of logins in ",
+        {:xmlData =>  @monthly_data,
+         :chartConfigs => { :caption => "Monthly Logins",
+                            :subCaption => "(For Each Month)",
+                            :xAxisName => "Months",
+                            :yAxisName => "Number of Logins",
+                            :skipNames => 3
+         }
+        }
+      )
+      render :template => "review/index"
+  end
+
+  def logins_by_month
+
+    add_breadcrumb "Monthly Logins", "/user/logins"
+
+    add_breadcrumb "Daily Logins", "/user/logins_by_month"
+
+    @monthly_data = User.group("date_format(lastlogin, '%Y/%m/%d')").count(:conditions => "date_format(lastlogin, '%Y/%m') = '#{params[:month]}'")
+    @str_xml = EstablishmentController.generate_xml('/user/login_details?date=',
+                                                    "Number of Logins on ",
+
+                                {:xmlData =>  @monthly_data,
+                                 :chartConfigs =>
+                                     {
+                                      :caption => "Daily Logins in the Month",
+                                      :subCaption => "For the month of : #{params[:month]}",
+                                      :xAxisName => "Date Range",
+                                      :yAxisName => "Number of Logins",
+                                      :skipNames => 7
+                                     }
+                                }
+
+    )
+    render :template => "review/index"
+
+  end
+
+  def login_details
+
+    add_breadcrumb "Monthly Logins", "/user/logins"
+
+    add_breadcrumb "Daily Logins", "/user/logins_by_month?month=#{params[:date][0..6]}"
+
+    add_breadcrumb "Login Data", "/user/login_details"
+
+    @user_data = User.find(:all, :conditions => "date_format(lastlogin, '%Y/%m/%d') = '#{params[:date]}'")
+    #render :text => @reviews_daily_data.to_yaml
+
+    render :template => "user/user_details" , :locals => { :page_header => "User Logins on " }
+  end
+
+
   def index
     add_breadcrumb "User", "/user/index"
     @user_data = User.group("date_format(user_dob, '%Y')").count
@@ -64,7 +183,7 @@ class UserController < ApplicationController
     add_breadcrumb "Reviews", "/user/reviews"
     add_breadcrumb "Reviews By User", "/user/reviews_by_user"
     @user_data = ReviewRating.group(:rev_rate_1).count(:conditions => {:rev_user_name => params[:rev_user_name]})
-
+    @user_data = @user_data.sort_by { |k,v| k }.reverse
     reviewed_user = User.first(:conditions => {:user_name =>  params[:rev_user_name]})
     @data_for_xml = {}
     @user_data.each { |k,v |
