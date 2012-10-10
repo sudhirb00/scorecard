@@ -46,17 +46,32 @@
     <%= link_to('Reviews', "/review/index")  %>
   </li>
 
-        <li id="demo" class="dropdown" data-dropdown="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Users<b class="caret"></b></a>
+  <li id="demo" class="dropdown" data-dropdown="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Users<b class="caret"></b></a>
 
 
-          <ul class="dropdown-menu">
-            <li><a href="/user/index" class="dropdown">Age</a></li>
-            <li class="divider"></li>
-            <li><a href="/user/reviews" class="dropdown">Reviews</a></li>
-          </ul>
+    <ul class="dropdown-menu">
+        <li><a href="/user/signups" class="dropdown">Sign-ups</a></li>
+        <li><a href="/user/logins" class="dropdown">Logins</a></li>
+      <li class="divider"></li>
+      <li><a href="/user/index" class="dropdown">Age</a></li>
+      <li><a href="/user/reviews" class="dropdown">Reviews</a></li>
+    </ul>
 
-        </li>
+  </li>
+
+
+  <li id="monitor" class="dropdown" data-dropdown="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Status<b class="caret"></b></a>
+
+
+    <ul class="dropdown-menu">
+      <li><a href="/monitor/solr_status" class="dropdown">Solr</a></li>
+      <li class="divider"></li>
+      <li><a href="" class="dropdown">TBD</a></li>
+    </ul>
+
+  </li>
 
 
       </ul>
