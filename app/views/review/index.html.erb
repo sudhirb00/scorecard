@@ -16,7 +16,7 @@
     <tbody>
 
     <% count_total = 0 %>
-    <% @reviews_monthly_data.each { | k, v | %>
+    <% @monthly_data.each { | k, v | %>
         <tr>
           <td>
             <%= k.blank? ? 'N/A' : k %>
