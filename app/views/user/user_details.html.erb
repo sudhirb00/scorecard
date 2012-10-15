@@ -54,7 +54,7 @@
           </td>
 
           <td>
-			  <% @img_path = (data.profileimage.nil?) ? '<img width="100" height="100" title="No Profile Image" alt="No Profile Image" src="http://st4.timescity.com/userprofile/user_no_image.jpg">' : "<img src='http://st4.timescity.com/userprofile/#{data.profileimage}' alt='#{data.user_fname} #{data.user_lname}'  title='#{data.user_fname} #{data.user_lname}'>"%>
+			  <% @img_path = (data.profileimage.nil?) ? '<img width="100" height="100" title="No Profile Image" alt="No Profile Image" src="http://st4.timescity.com/userprofile/user_no_image.jpg">' : "<a href='http://facebook.com/#{data.user_fb_uid}'><img src='http://st4.timescity.com/userprofile/#{data.profileimage}' alt='#{data.user_fname} #{data.user_lname}'  title='#{data.user_fname} #{data.user_lname}'></a>"%>
             <%=  raw @img_path %>
           </td>
         </tr>
