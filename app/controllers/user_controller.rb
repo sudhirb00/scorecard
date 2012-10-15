@@ -97,7 +97,7 @@ class UserController < ApplicationController
                                       :subCaption => "For the month of : #{params[:month]}",
                                       :xAxisName => "Date Range",
                                       :yAxisName => "Number of Logins",
-                                      :skipNames => 7
+                                      # :skipNames => 7
                                      }
                                 }
 
