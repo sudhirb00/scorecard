@@ -1,0 +1,63 @@
+<h2><%= page_header %></a>
+<h5>Click on column headers to sort, shift-click for multi sort</h5>
+
+<div id="chart_data" class="span12">
+  <table class="table table-striped" id="review_data">
+    <thead>
+    <tr>
+      <th>Sr No.</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Created Date</th>
+      <th>Modified Date</th>
+      <th>Last Modified Author</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <% count_total = 1 %>
+    <% @events_data.each { | data | %>
+        <tr>
+          <td>
+            <%= count_total %>
+          </td>
+          <td>
+            <%= raw "<a href='http://timescity.com/#{data.guid}'>#{data.dde_title}</a>" %>
+          </td>
+          <td>
+            <%= raw "#{data.dde_desc}" %>
+            <% count_total += 1 %>
+          </td>
+
+          <td>
+            <%= display_date(data.dde_start_date)  %>
+          </td>
+          <td>
+            <%= display_date(data.dde_end_date)  %>
+          </td>
+          <td>
+            <%= display_date(data.insert_date)  %>
+          </td>
+          <td>
+            <%= data.modified_date.nil? ? "N/A" : display_date(data.modified_date)  %>
+          </td>
+          <td>
+            <%= author_name(data.last_modified_author_id) %>
+          </td>
+
+        </tr>
+
+    <%  } %>
+    </tbody>
+  </table>
+</div>
+
+<script language="javascript">
+$(document).ready(function(){
+$('#review_data').dataTable({
+    "sDom": "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>"
+});
+});
+</script>
