@@ -5,4 +5,8 @@ class HomeController < ApplicationController
   def index
   end
 
+  def rel_notes
+  
+  end
+  
 end

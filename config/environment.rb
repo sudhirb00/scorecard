@@ -22,3 +22,7 @@ DEFAULT_CHART_CONFIGS = { :caption=>'Title', :subCaption=>"Sub Title",
 }
 
 PIE_CHART_GRAPH_TYPE = "FCF_Doughnut2D.swf"
+
+TC_REALM = "Enter password for Timescity Scorecard"
+AUTHORIZED_USERS = {
+        "tcity" => Digest::MD5.hexdigest(["tcity",TC_REALM,"tcity"].join(":"))}  #ha1 digest password
