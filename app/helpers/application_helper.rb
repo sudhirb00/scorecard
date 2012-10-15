@@ -25,5 +25,24 @@ MONTHS = { 1 => "Jan", 2 => "Feb", 3 => "Mar", 4 => "Apr",
     MONTHS[month_num]
   end
   
+  def author_name (id)
+    return 'n/a' if id.nil?
+    author = Author.find(id)
+    author.author_name
+  end
+  
+  def events_details_link (k, field_to_use, label_to_use)
+    
+  text = k < 0 ? "#{k.abs} weeks before" : "#{k} weeks after"
+    
+  return "<a href='/event/events_listing?post_gap=#{k}&field_to_use=#{field_to_use}&label=#{label_to_use}'>#{text}</a>"
+
+  end
+  
+  
+  def display_date(input_date)
+    return 'N/A' if input_date.nil?
+    return input_date.strftime("%d-%b-%y %l:%M%p")
+  end
 
 end

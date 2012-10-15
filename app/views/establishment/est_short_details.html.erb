@@ -15,6 +15,7 @@
       <th>Critic Review</th>
       <th>Created Date</th>
       <th>Modified Date</th>
+	  <th>Modify By</th>
     </tr>
     </thead>
     <tbody>
@@ -48,6 +49,9 @@
           </td>
           <td>
             <%= data.modified_date  %>
+          </td>
+          <td>
+            <%= author_name(data.modified_by)  %>
           </td>
 
         </tr>
