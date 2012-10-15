@@ -10,7 +10,9 @@ def self.log_message(message, level=3)
   current_time = Time.now.asctime
 
   if level <= CURRENT_LEVEL
-    Rails.logger.info( "#{current_time} : #{message}")
+    # Rails.logger.info( "#{current_time} : #{message}")
+    puts ( "#{current_time} : #{message}")
+
   end 
   
   
