@@ -9,7 +9,7 @@
   <table class="table table-striped">
     <thead>
     <tr>
-      <th>Reviews in</th>
+      <th>Duration</th>
       <th>Count</th>
     </tr>
     </thead>
@@ -19,7 +19,7 @@
     <% @monthly_data.each { | k, v | %>
         <tr>
           <td>
-            <%= k.blank? ? 'N/A' : k %>
+            <%= k.blank? ? 'N/A' : formatDate(k) %>
           </td>
           <td style="text-align: right;">
             <%= v %>
