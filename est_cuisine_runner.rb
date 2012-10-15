@@ -10,7 +10,9 @@ def self.log_message(message, level=3)
   current_time = Time.now.asctime
 
   if level <= CURRENT_LEVEL
-    Rails.logger.info( "#{current_time} : #{message}")
+    # Rails.logger.info( "#{current_time} : #{message}")
+    puts ( "#{current_time} : #{message}")
+
   end 
   
   
@@ -35,6 +37,7 @@ log_message("Getting establishments",2)
 
 Establishment.all.each { |est|
   log_message(est.to_yaml, 5)
+  Rails.logger.info("Processing : [#{est.est_id}] [#{est.est_name}]");
   log_message(est.est_cuisines, 4)
   @est_cuisines = est.est_cuisines.split(",")
   @est_cuisines.each { |est_cuisine|
