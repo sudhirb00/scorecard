@@ -248,7 +248,7 @@ class DataController < ApplicationController
                   ")
     render :template => "establishment/est_short_details", :locals => {
         :page_header =>
-            "Establishments in #{params[:est_locality]}, #{params[:est_city_name]}"
+            "Establishments in #{params[:est_locality]}, #{params[:est_city_name]} with #{params[:data]} = #{params[:data_exists]}"
              }
     
     end
