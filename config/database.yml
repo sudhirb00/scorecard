@@ -1,8 +1,0 @@
-
-development:
-  adapter: mysql2
-  database: timescity_live_nov_6
-  pool: 5
-  timeout: 50
-  username: root	
-  password: root
