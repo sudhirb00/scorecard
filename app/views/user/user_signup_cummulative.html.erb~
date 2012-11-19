@@ -1,0 +1,49 @@
+
+
+<div id="chartdiv" class="span9">
+  Timescity Chart.
+
+</div>     <!- end of chartdiv ->
+
+<div id="chart_data" class="span2">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Duration</th>
+      <th>Count</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <% count_total = 0 %>
+    <% @monthly_data.each { | k, v | %>
+        <tr>
+          <td>
+            <%= k.blank? ? 'N/A' : formatDate(k) %>
+          </td>
+          <td style="text-align: right;">
+            <%= v %>
+            <% count_total += (v.nil? ? 0 : v) %>
+          </td>
+        </tr>
+
+    <%  } %>
+    </tbody>
+    <thead>
+    <tr>
+      <th>Total</th>
+      <th style="text-align: right;"><%= count_total %></th>
+    </tr>
+    </thead>
+  </table>
+</div>
+
+
+
+<script type="text/javascript">
+    var chart = new FusionCharts("/assets/fusionCharts/FCF_MSArea2D.swf", "ChartId", <%= LINE_CHARTS_WIDTH %>, <%= LINE_CHARTS_HEIGHT %>);
+    chart.setDataXML('<%= raw @str_xml %>');
+
+
+    chart.render("chartdiv");
+</script>

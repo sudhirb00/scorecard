@@ -21,7 +21,7 @@ class ApiController < ApplicationController
       render :template => "review/index"
 
   end
-
+  
   def hits_by_month
 
     add_breadcrumb "Api Monthly Hits", "/api/monthly_hits"
@@ -48,9 +48,7 @@ class ApiController < ApplicationController
 
   end
 
-
-
-def api_hits_details
+  def api_hits_details
 
     add_breadcrumb "Api Monthly Hits ", "/api/monthly_hits"
 
@@ -63,5 +61,32 @@ def api_hits_details
     render :template => "api/api_details" , :locals => { :page_header => "Number of Hits on" }
   end
 
- 
+  def cum_monthly_hits
+   add_breadcrumb "Api Monthly Cumalative Hits", "/api/cum_monthly_hits"
+
+    @raw_monthly_data = ApiLogAccess.group("date_format(log_time, '%Y/%m')").count(:conditions => {:log_time => '2011-01-01'..'2099-01-01'})
+	cum_count = 0
+	@monthly_data = {} 
+	@raw_monthly_data.each { |k,v | 
+
+		cum_count = cum_count + v  
+		@monthly_data[k] = cum_count
+	}
+    @str_xml = EstablishmentController.generate_xml(
+	                                            '',
+	                                            "Number of Hits at ",
+	{:xmlData =>  @monthly_data,
+	 :chartConfigs => { :caption => "Monthly API Hits",
+	                    :subCaption => "(For Each Month)",
+	                    :xAxisName => "Months",
+	                    :yAxisName => "Number of Hits",
+	                    :skipNames => 1
+	 }
+	}
+      )
+
+       render :template => "user/user_signup_cumulative"
+
+  end
+
 end

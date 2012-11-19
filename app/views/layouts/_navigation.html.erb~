@@ -1,0 +1,109 @@
+
+
+<div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      <div class="nav-collapse collapse">
+        <ul class="nav">
+
+
+        <%= link_to "TC Scorecard", root_path, :class => 'brand' %>
+
+          <li id="establishments" class="dropdown" data-dropdown="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Establishments<b class="caret"></b></a>
+
+            <ul class="dropdown-menu">
+              <li><a href="/establishment/est_type" class="dropdown">Establishment Types</a></li>
+              <li><a href="/establishment/brands" class="dropdown">Brands</a></li>
+            </ul>
+          </li>
+
+          <li id="data" class="dropdown" data-dropdown="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Data<b class="caret"></b></a>
+
+            <ul class="dropdown-menu">
+              <li><a href="/data/critic_reviews" class="dropdown">Critic Review</a></li>
+              <li><a href="/data/gps_data" class="dropdown">GPS Data</a></li>
+              <li><a href="/data/phones_data" class="dropdown">Phones Data</a></li>
+              <li><a href="/data/price_data" class="dropdown">Price Data</a></li>
+              <li><a href="/data/services_data" class="dropdown">Services Data</a></li>
+              <li><a href="/data/features_data" class="dropdown">Features Data</a></li>
+              <li><a href="/data/cuisines_data" class="dropdown">Cuisines Data</a></li>
+              <li class="divider"></li>
+              <li><a href="/data/cuisines_relation" class="dropdown">Cuisines Relations</a></li>
+			  <!-- a dummy change -->
+            </ul>
+          </li>
+
+
+          <li id="reviews">
+    <%= link_to('Reviews', "/review/index")  %>
+  </li>
+
+  <li id="demo" class="dropdown" data-dropdown="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Events<b class="caret"></b></a>
+
+
+    <ul class="dropdown-menu">
+        <li><a href="/event/listed_weeks_before_start" class="dropdown">Listed Before Start Date</a></li>
+        <li><a href="/event/listed_weeks_before_end" class="dropdown">Listed Before End Date</a></li>
+    </ul>
+
+  </li>
+
+
+  <li id="demo" class="dropdown" data-dropdown="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Users<b class="caret"></b></a>
+
+
+    <ul class="dropdown-menu">
+        <li><a href="/user/signups" class="dropdown">Sign-ups</a></li>
+	<li><a href="/user/cumsignups" class="dropdown">Cummulative Sign-ups</a></li>
+        <li><a href="/user/logins" class="dropdown">Logins</a></li>
+	<li><a href="/user/cumlogins" class="dropdown">Cummulative Logins</a></li>
+      <li class="divider"></li>
+      <li><a href="/user/index" class="dropdown">Age</a></li>
+      <li><a href="/user/reviews" class="dropdown">Reviews</a></li>
+    </ul>
+
+  </li>
+  <li id="api" class="dropdown" data-dropdown="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#">API<b class="caret"></b></a>
+
+
+    <ul class="dropdown-menu">
+        <li><a href="/api/monthly_hits" class="dropdown">Number of Hits</a></li>
+	<li><a href="/api/cum_monthly_hits" class="dropdown">Cummulative Hits</a></li>
+    </ul>
+
+  </li>
+
+ <li id="log" class="dropdown" data-dropdown="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Log<b class="caret"></b></a>
+
+
+    <ul class="dropdown-menu">
+        <li><a href="/log/monthly_hits" class="dropdown">Number of Hits</a></li>
+ 	<li><a href="/log/cum_monthly_hits" class="dropdown">Cummulative Hits</a></li>
+    </ul>
+
+  </li>
+
+
+
+
+      </ul>
+    </div>
+
+    </div>
+  </div>
+</div>
+
+
+

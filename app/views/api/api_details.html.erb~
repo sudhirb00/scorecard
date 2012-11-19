@@ -1,0 +1,49 @@
+<h2><%= page_header =%> <%= formatDate(params[:date]) %></h2>
+<h5>Click on column headers to sort, shift-click for multi sort</h5>
+
+<div id="chart_data" class="span12">
+  <table class="table table-striped" id="api_details_data">
+    <thead>
+    <tr>
+      <th>Sr No.</th>
+      <th>Api File Name</th>
+      <th>Client </th>
+      <th>IP</th>
+      <th>Log Time </th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <% count_total = 1 %>
+    <% @api_data.each { | data | %>
+        <tr>
+          <td>
+            <%= count_total %>
+            <% count_total += 1 %>
+          </td>
+          <td>
+            <%= data.api_file_name  %>
+          </td>
+          <td>
+            <%= data.client  %>
+          </td>
+          <td>
+            <%= data.ip  %>
+          </td>
+          <td>
+		  <%= data.log_time %>	
+          </td>
+        </tr>
+
+    <%  } %>
+    </tbody>
+  </table>
+</div>
+
+<script language="javascript">
+$(document).ready(function(){
+$('#api_details_data').dataTable({
+    "sDom": "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>"
+});
+});
+</script>

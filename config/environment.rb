@@ -7,6 +7,9 @@ Scorecard::Application.initialize!
 PIE_CHARTS_WIDTH = 800
 PIE_CHARTS_HEIGHT = 600
 
+LINE_CHARTS_WIDTH = 600
+LINE_CHARTS_HEIGHT = 400
+
 DEFAULT_CHART_CONFIGS = { :caption=>'Title', :subCaption=>"Sub Title",
     :showNames=>'1', :decimalPrecision=>'0',
     :rotateNames => '1',

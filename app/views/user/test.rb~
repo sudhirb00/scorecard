@@ -1,0 +1,4 @@
+meals = ["breakfast","lunch","dinner"]
+puts meals[2];
+puts meals.first;
+puts meals.last;

@@ -20,7 +20,7 @@ class UserController < ApplicationController
       )
       render :template => "review/index"
   end
-
+  
   def signups_by_month
 
     add_breadcrumb "Monthly Signups", "/user/signups"
@@ -79,7 +79,7 @@ class UserController < ApplicationController
       )
       render :template => "review/index"
   end
-
+  
   def logins_by_month
 
     add_breadcrumb "Monthly Logins", "/user/logins"
@@ -211,5 +211,59 @@ class UserController < ApplicationController
    }
 
   end
+
+  def cumsignups
+    add_breadcrumb "User", "/user/cumsignups"
+
+    @raw_monthly_data = User.group("date_format(created_date, '%Y/%m')").count(:conditions => {:created_date => '2011-01-01'..'2099-01-01'})
+
+	cum_count = 0
+	@monthly_data = {} 
+	@raw_monthly_data.each { |k,v | 
+
+		cum_count = cum_count + v  
+		@monthly_data[k] = cum_count
+	}
+
+    @str_xml = EstablishmentController.generate_xml(
+                                                    '',
+                                                    "Number of Signups at ",
+        {:xmlData =>  @monthly_data,
+         :chartConfigs => { :caption => "Monthly Signups",
+                            :subCaption => "(For Each Month)",
+                            :xAxisName => "Months",
+                            :yAxisName => "Number of Signups",
+                            :skipNames => 3
+         }
+        }
+      )
+      render :template => "user/user_signup_cumulative"
+  end
+
+  def cumlogins
+    add_breadcrumb "User", "/user/cumlogins"
+		@raw_monthly_data = User.group("date_format(lastlogin, '%Y/%m')").count(:conditions => {:lastlogin => '2011-01-01'..'2099-01-01'})
+		cum_count = 0
+		@monthly_data = {} 
+		@raw_monthly_data.each { |k,v | 
+
+			cum_count = cum_count + v  
+			@monthly_data[k] = cum_count
+		}
+
+	    @str_xml = EstablishmentController.generate_xml(
+			                                    '',
+			                                    "Number of Signups at ",
+		{:xmlData =>  @monthly_data,
+		 :chartConfigs => { :caption => "Monthly Logins",
+			            :subCaption => "(For Each Month)",
+			            :xAxisName => "Months",
+			            :yAxisName => "Number of Logins",
+			            :skipNames => 1
+		 }
+		}
+	      )
+	      render :template => "user/user_signup_cumulative"
+   end
 
 end

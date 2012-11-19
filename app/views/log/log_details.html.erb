@@ -1,0 +1,56 @@
+<h2><%= page_header =%> <%= formatDate(params[:date]) %></h2>
+<h5>Click on column headers to sort, shift-click for multi sort</h5>
+<div id="chart_data" class="span12">
+  <table class="table table-striped" id="log_details_data">
+    <thead>
+    <tr>
+      <th>Sr No.</th>
+      <th>Id</th>
+      <th>Type</th>
+      <th>IP</th>
+      <th>City </th>
+      <th>Cpage Url</th>
+      <th>Log Time</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <% count_total = 1 %>
+    <% @log_data.each { | data | %>
+        <tr>
+          <td>
+            <%= count_total %>
+	    <% count_total += 1 %>
+          </td>
+          <td>
+            <%= data.entity_id  %>
+          </td>
+          <td>
+            <%= data.entity_type  %>
+          </td>
+          <td>
+            <%= data.ip  %>
+          </td>
+          <td>
+            <%= data.city %>
+          </td>
+          <td>
+            <%= data.cpage_url%>
+          </td>
+          <td>
+	    <%= data.log_time %>	
+          </td>
+        </tr>
+
+    <%  } %>
+    </tbody>
+  </table>
+</div>
+
+<script language="javascript">
+$(document).ready(function(){
+$('#log_details_data').dataTable({
+    "sDom": "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>"
+});
+});
+</script>
