@@ -45,4 +45,14 @@ MONTHS = { 1 => "Jan", 2 => "Feb", 3 => "Mar", 4 => "Apr",
     return input_date.strftime("%d-%b-%y %l:%M%p")
   end
 
+  def display_establishment(id, label)
+  est = Establishment.find(id)
+  return "<a href='http://timescity.com#{est.est_guid}' alt='#{est.est_add1} #{est.est_loc_name}, #{est.est_city_name}' title='#{est.est_add1} #{est.est_loc_name}, #{est.est_city_name}'>#{label}</a>"
+  end
+
+  def display_movie(id, label)
+  movie = Movie.find(id)
+  return "<a href='http://timescity.com#{movie.guid}' alt='#{movie.cSynopsis}' title='#{movie.cSynopsis}'>#{label}</a>"
+  end
+
 end
