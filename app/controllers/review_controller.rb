@@ -5,29 +5,68 @@ class ReviewController < ApplicationController
   def index
 
     add_breadcrumb "Monthly Reviews", "/review/index"
-    @monthly_data = ReviewRating.group("date_format(insertdate, '%Y/%m')").count(:conditions => {:insertdate => '2011-01-01'..'2099-01-01'})
+    @monthly_data = ReviewRating.monthly_data_by_type
 
-    @str_xml = EstablishmentController.generate_xml(
-                                                    '/review/reviews_by_month?month=',
-                                                    "Number of Reviews in ",
-        {:xmlData =>  @monthly_data,
-         :chartConfigs => { :caption => "Monthly Reviews Created",
-                            :subCaption => "(For Each Month)",
-                            :xAxisName => "Months",
-                            :yAxisName => "Number of Reviews",
-                            :skipNames => 3
-         }
-        }
+    @data_for_xml = {}
+    @monthly_data.each { |k,v |
+      logger.debug( "k: #{k} , v: #{v}" )
+      # skip this cuisine
+      @data_for_xml [ k ] = {:key => k,
+        :value => v ,
+        :hover_text => "k",
+  	    :link => "/review/reviews_by_month?month=",
+      }
+    }
 
-
-
-    )
-
-    # @str_xml = EstablishmentController.create_graph_xml( )
-
+    @str_xml = ApplicationController.generate_stacked_xml(
+        {:xmlData =>  @data_for_xml,
+         :chartConfigs => { 
+                              :caption => "Reviews Data by Month",
+                              :subCaption => "By Review Type",
+                              :animation => 1,
+                              :xAxisName => "Months",
+                              :yAxisName => "Number of Reviews"
+                            }
+                  }
+        )
+ 
   end
 
   def reviews_by_month
+
+    add_breadcrumb "Monthly Reviews", "/review/index"
+    @monthly_data = ReviewRating.daily_data_by_type (params[:month])
+
+    @data_for_xml = {}
+    @monthly_data.each { |k,v |
+      logger.debug( "k: #{k} , v: #{v}" )
+      # skip this cuisine
+      @data_for_xml [ k ] = {:key => k,
+        :value => v ,
+        :hover_text => "k",
+  	    :link => "/review/review_details?date=",
+      }
+    }
+
+    @str_xml = ApplicationController.generate_stacked_xml(
+        {:xmlData =>  @data_for_xml,
+         :chartConfigs => { 
+                              :caption => "Reviews Data by Month",
+                              :subCaption => "By Review Type",
+                              :animation => 1,
+                              :xAxisName => "Months",
+                              :yAxisName => "Number of Reviews"
+                            }
+                  }
+        )
+        render :template => "review/index"
+ 
+  end
+  
+
+
+
+  def old_reviews_by_month
 
     add_breadcrumb "Monthly Reviews", "/review/index"
 
