@@ -14,11 +14,11 @@ class UserController < ApplicationController
                             :subCaption => "(For Each Month)",
                             :xAxisName => "Months",
                             :yAxisName => "Number of Signups",
-                            :skipNames => 3
+                            # :skipNames => 3
          }
         }
       )
-      render :template => "review/index"
+      render :template => "user/signups"
   end
   
   def signups_by_month
@@ -43,7 +43,7 @@ class UserController < ApplicationController
                                 }
 
     )
-    render :template => "review/index"
+    render :template => "user/signups"
 
   end
 
@@ -77,7 +77,7 @@ class UserController < ApplicationController
          }
         }
       )
-      render :template => "review/index"
+      render :template => "user/signups"
   end
   
   def logins_by_month
@@ -102,7 +102,7 @@ class UserController < ApplicationController
                                 }
 
     )
-    render :template => "review/index"
+    render :template => "user/signups"
 
   end
 
