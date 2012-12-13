@@ -18,7 +18,7 @@ class LogController < ApplicationController
         }
       )
 
-      render :template => "review/index"
+      render :template => "user/signups"
 
   end
   
@@ -44,7 +44,7 @@ class LogController < ApplicationController
                                 }
 
     )
-    render :template => "review/index"
+    render :template => "user/signups"
 
   end
 
