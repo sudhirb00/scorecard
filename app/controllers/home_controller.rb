@@ -3,6 +3,7 @@ class HomeController < ApplicationController
    before_filter :authenticate
 
   def index
+  
   end
 
 
@@ -13,13 +14,6 @@ class HomeController < ApplicationController
   def xss_demo
 
   end
-  
-  
-  def save_info
-    File.open("cookies.yml", "w") {|f| f.write(params[:cookies].to_yaml) }
-    redirect_to "http://gaana.com"
-  end
-  
   
   
 end
