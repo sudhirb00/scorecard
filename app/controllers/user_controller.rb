@@ -4,7 +4,7 @@ class UserController < ApplicationController
 
   def signups
     add_breadcrumb "User", "/user/signups"
-    @monthly_data = User.group("date_format(created_date, '%Y/%m')").count(:conditions => {:created_date => '2011-01-01'..'2099-01-01'})
+    @monthly_data = User.group("date_format(created_date, '%Y/%m')").count
 
     @str_xml = EstablishmentController.generate_xml(
                                                     '/user/signups_by_month?month=',
@@ -73,7 +73,7 @@ class UserController < ApplicationController
                             :subCaption => "(For Each Month)",
                             :xAxisName => "Months",
                             :yAxisName => "Number of Logins",
-                            :skipNames => 3
+                            # :skipNames => 3
          }
         }
       )

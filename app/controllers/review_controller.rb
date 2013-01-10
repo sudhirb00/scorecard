@@ -5,11 +5,14 @@ class ReviewController < ApplicationController
   def index
 
     add_breadcrumb "Monthly Reviews", "/review/index"
-    @monthly_data = ReviewRating.monthly_data_by_type
+   # logger.debug(cookies.to_yaml)
+    logger.debug("Hello")
+    #logger.debug(cookies[:timescity_googles])
+    @monthly_data = ReviewRating.monthly_data_by_type(cookies[:timescity_googles])
 
     @data_for_xml = {}
     @monthly_data.each { |k,v |
-      logger.debug( "k: #{k} , v: #{v}" )
+      # logger.debug( "k: #{k} , v: #{v}" )
       # skip this cuisine
       @data_for_xml [ k ] = {:key => k,
         :value => v ,
@@ -35,7 +38,7 @@ class ReviewController < ApplicationController
   def reviews_by_month
 
     add_breadcrumb "Monthly Reviews", "/review/index"
-    @monthly_data = ReviewRating.daily_data_by_type (params[:month])
+    @monthly_data = ReviewRating.daily_data_by_type(params[:month], cookies[:timescity_googles])
 
     @data_for_xml = {}
     @monthly_data.each { |k,v |
@@ -101,7 +104,11 @@ class ReviewController < ApplicationController
 
     add_breadcrumb "Reviews Data", "/review/review_details"
 
-    @reviews_daily_data = ReviewRating.find(:all, :conditions => "date_format(insertdate, '%Y/%m/%d') = '#{params[:date]}'")
+    if cookies[:timescity_googles]
+      @reviews_daily_data = ReviewRating.find(:all, :conditions => "date_format(insertdate, '%Y/%m/%d') = '#{params[:date]}'").no_seeders
+    else
+      @reviews_daily_data = ReviewRating.find(:all, :conditions => "date_format(insertdate, '%Y/%m/%d') = '#{params[:date]}'")
+    end
     #render :text => @reviews_daily_data.to_yaml
 
   end
