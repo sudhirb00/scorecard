@@ -95,19 +95,19 @@ table.dataTable tr.even td.sorting_3 { background-color: #F9F9FF; }
 }
 
 .paginate_disabled_previous {
-	background-image: url('../images/back_disabled.jpg');
+	background-image: url('/assets/images/back_disabled.jpg');
 }
 
 .paginate_enabled_previous {
-	background-image: url('../images/back_enabled.jpg');
+	background-image: url('/assets/images/back_enabled.jpg');
 }
 
 .paginate_disabled_next {
-	background-image: url('../images/forward_disabled.jpg');
+	background-image: url('/assets/images/forward_disabled.jpg');
 }
 
 .paginate_enabled_next {
-	background-image: url('../images/forward_enabled.jpg');
+	background-image: url('/assets/images/forward_enabled.jpg');
 }
 
 /* Full number pagination */
@@ -164,12 +164,12 @@ table.dataTable tr.even td.sorting_3 { background-color: #F9F9FF; }
 /*
  * Sorting
  */
-.sorting { background: url('../images/sort_both.png') no-repeat center right; }
-.sorting_asc { background: url('../images/sort_asc.png') no-repeat center right; }
-.sorting_desc { background: url('../images/sort_desc.png') no-repeat center right; }
+.sorting { background: url('/assets/images/sort_both.png') no-repeat center right; }
+.sorting_asc { background: url('/assets/images/sort_asc.png') no-repeat center right; }
+.sorting_desc { background: url('/assets/images/sort_desc.png') no-repeat center right; }
 
-.sorting_asc_disabled { background: url('../images/sort_asc_disabled.png') no-repeat center right; }
-.sorting_desc_disabled { background: url('../images/sort_desc_disabled.png') no-repeat center right; }
+.sorting_asc_disabled { background: url('/assets/images/sort_asc_disabled.png') no-repeat center right; }
+.sorting_desc_disabled { background: url('/assets/images/sort_desc_disabled.png') no-repeat center right; }
  
 table.dataTable th:active {
 	outline: none;
