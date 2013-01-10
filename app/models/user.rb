@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
   self.table_name = 'tc_users'
   self.primary_key = "user_id"
-  default_scope :conditions => {:created_date => '2011-01-01'..'2099-01-01'}
+  default_scope :conditions => {:created_date => '2010-01-01'..'2099-01-01'}
   
  
   def self.monthly_data_by_type
