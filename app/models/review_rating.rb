@@ -8,7 +8,9 @@ class ReviewRating < ActiveRecord::Base
 
   def self.monthly_data_by_type(no_seeders = false)
   
-  if no_seeders
+  logger.debug("No seeders")
+  logger.debug(no_seeders)
+  if no_seeders.to_i == 1
       sorted_reviews = select("rev_id, type, insertdate", ).no_seeders
   else
     sorted_reviews = select("rev_id, type, insertdate", )
@@ -37,7 +39,7 @@ class ReviewRating < ActiveRecord::Base
 
   def self.daily_data_by_type (month_to_query, no_seeders = false)
 
-  if no_seeders
+  if no_seeders.to_i == 1
   sorted_reviews = select("rev_id, type, insertdate", ).where("date_format(insertdate, '%Y/%m') = ? " , month_to_query ).no_seeders
   else
   sorted_reviews = select("rev_id, type, insertdate", ).where("date_format(insertdate, '%Y/%m') = ? " , month_to_query )
