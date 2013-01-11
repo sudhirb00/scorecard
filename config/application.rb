@@ -1,6 +1,7 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
+require 'active_record/connection_adapters/mysql2_adapter'
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
@@ -57,6 +58,7 @@ module Scorecard
     # Enable the asset pipeline
     config.assets.enabled = true
 
+    ActiveRecord::ConnectionAdapters::Mysql2Adapter.emulate_booleans = false
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
