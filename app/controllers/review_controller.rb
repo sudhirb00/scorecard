@@ -1,6 +1,7 @@
 class ReviewController < ApplicationController
   add_breadcrumb "Home", :root_path
-  before_filter :authenticate
+
+    before_filter :authenticate
 
   def index
 
@@ -102,12 +103,11 @@ class ReviewController < ApplicationController
 
     add_breadcrumb "Reviews Data", "/review/review_details"
 
-    if cookies[:timescity_goggles]
-      @reviews_daily_data = ReviewRating.find(:all, :conditions => "date_format(insertdate, '%Y/%m/%d') = '#{params[:date]}'").no_seeders
+    if cookies[:timescity_goggles].to_i == 1
+      @reviews_daily_data = ReviewRating.created_on_date(params[:date]).no_seeders
     else
-      @reviews_daily_data = ReviewRating.find(:all, :conditions => "date_format(insertdate, '%Y/%m/%d') = '#{params[:date]}'")
+      @reviews_daily_data = ReviewRating.created_on_date(params[:date])
     end
-    #render :text => @reviews_daily_data.to_yaml
 
   end
 
