@@ -5,10 +5,8 @@ class ReviewController < ApplicationController
   def index
 
     add_breadcrumb "Monthly Reviews", "/review/index"
-   # logger.debug(cookies.to_yaml)
-    logger.debug("Hello")
-    #logger.debug(cookies[:timescity_googles])
-    @monthly_data = ReviewRating.monthly_data_by_type(cookies[:timescity_googles])
+
+    @monthly_data = ReviewRating.monthly_data_by_type(cookies[:timescity_goggles])
 
     @data_for_xml = {}
     @monthly_data.each { |k,v |
@@ -21,7 +19,7 @@ class ReviewController < ApplicationController
       }
     }
 
-    @str_xml = ApplicationController.generate_stacked_xml(
+    @str_xml = ReviewController.generate_stacked_xml(
         {:xmlData =>  @data_for_xml,
          :chartConfigs => { 
                               :caption => "Reviews Data by Month",
@@ -38,7 +36,7 @@ class ReviewController < ApplicationController
   def reviews_by_month
 
     add_breadcrumb "Monthly Reviews", "/review/index"
-    @monthly_data = ReviewRating.daily_data_by_type(params[:month], cookies[:timescity_googles])
+    @monthly_data = ReviewRating.daily_data_by_type(params[:month], cookies[:timescity_goggles])
 
     @data_for_xml = {}
     @monthly_data.each { |k,v |
@@ -51,13 +49,13 @@ class ReviewController < ApplicationController
       }
     }
 
-    @str_xml = ApplicationController.generate_stacked_xml(
+    @str_xml = ReviewController.generate_stacked_xml(
         {:xmlData =>  @data_for_xml,
          :chartConfigs => { 
-                              :caption => "Reviews Data by Month",
+                              :caption => "Daily Reviews Data",
                               :subCaption => "By Review Type",
                               :animation => 1,
-                              :xAxisName => "Months",
+                              :xAxisName => "Days",
                               :yAxisName => "Number of Reviews"
                             }
                   }
@@ -104,7 +102,7 @@ class ReviewController < ApplicationController
 
     add_breadcrumb "Reviews Data", "/review/review_details"
 
-    if cookies[:timescity_googles]
+    if cookies[:timescity_goggles]
       @reviews_daily_data = ReviewRating.find(:all, :conditions => "date_format(insertdate, '%Y/%m/%d') = '#{params[:date]}'").no_seeders
     else
       @reviews_daily_data = ReviewRating.find(:all, :conditions => "date_format(insertdate, '%Y/%m/%d') = '#{params[:date]}'")
@@ -170,6 +168,62 @@ class ReviewController < ApplicationController
     )
     render :template => "establishment/graph_data_by_city"
 
+  end
+
+
+  def self.generate_stacked_xml (xml_config)
+    
+    @chart_config =  nil
+    @chart_config =  DEFAULT_CHART_CONFIGS
+
+    xml_config[:chartConfigs].each do |k, v|
+      @chart_config[k] = v
+    end
+
+    
+    xml = Builder::XmlMarkup.new()
+    xml.graph(@chart_config) do
+
+    xml.categories() do
+      xml_config[:xmlData].each do  |xmlKey, xmlDataRow|
+
+        xml.category(:name => xmlKey)
+      end  
+          
+    end
+
+    xml.dataset(:seriesName => "Establishments", :color => "008040" ) do
+      xml_config[:xmlData].each do  |xmlKey, xmlDataRow|
+      #logger.debug("Hi : ")
+      #logger.debug( xmlDataRow)
+      number = xmlDataRow[:value]["Establishments"].nil? ? 0 : xmlDataRow[:value]["Establishments"][:total]
+
+        xml.set(:value => number,
+                :link => "#{xmlDataRow[:link]}#{xmlDataRow[:key]}"
+                )
+      end  
+          
+    end
+
+ 
+    xml.dataset(:seriesName => "Movies", :color => "FFFF00") do
+      xml_config[:xmlData].each do  |xmlKey, xmlDataRow|
+      
+      number = xmlDataRow[:value]["Movies"].nil? ? 0 : xmlDataRow[:value]["Movies"][:total]
+        xml.set(:value => number,
+        :link => "#{xmlDataRow[:link]}#{xmlDataRow[:key]}"
+        )
+      end  
+          
+    end
+
+      
+
+    end
+
+    ret_val = xml
+    # ret_val = ret_val.gsub(/[']/, '\\\\\'')
+    return ret_val
   end
 
 
