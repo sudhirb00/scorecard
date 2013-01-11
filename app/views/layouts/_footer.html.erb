@@ -2,11 +2,19 @@
 <div class="row-fluid">
 
 <div class="span10">
-copyright @timescity.com 2012. ver 0.7 <a href="/home/rel_notes">Release notes</a>
+copyright @timescity.com 2012. ver 0.8 <a href="/home/rel_notes">Release notes</a>
 </div>
 
 <div class="span2">
-	<img src="/assets/goggles_black.jpg" border="0" alt="Turn on Googles">
+	<%= 
+	logger.debug(cookies[:timescity_goggles])
+	logger.debug(cookies[:timescity_goggles].to_i == 1)
+	if cookies[:timescity_goggles].to_i == 1 then
+		raw "<a href=\"/scorecard/goggles_off?.done=#{request.fullpath}\"><img src='/assets/goggles_red.jpg' border='0' title='Turn off Goggles'></a>"
+	else	
+	raw "<a href=\"/scorecard/goggles_on?.done=#{request.fullpath}\"><img src='/assets/goggles_black.jpg' border='0' title='Turn on Goggles'></a>"
+	end	
+	%>
 </div>
 
 </div>
