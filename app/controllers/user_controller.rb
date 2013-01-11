@@ -20,7 +20,138 @@ class UserController < ApplicationController
       )
       render :template => "user/signups"
   end
+
+  def signups_by_activation
+    add_breadcrumb "User", "/user/signups_by_activation"
+    @monthly_data = User.data_by_activation
+
+    @data_for_xml = {}
+    @monthly_data.each { |k,v |
+      # logger.debug( "k: #{k} , v: #{v}" )
+      # skip this cuisine
+      @data_for_xml [ k ] = {:key => k,
+        :value => v ,
+        :hover_text => "k",
+  	    :link => "/user/daily_signups_by_activation?month=",
+      }
+    }
+
+    list_to_loop = {   "Activated" => "7CFC00","Not Activated" => "FFA07A",  "Deleted" => "DC143C"}
+
+    @str_xml = UserController.generate_stacked_xml(
+        {:xmlData =>  @data_for_xml,
+         :chartConfigs => { 
+                              :caption => "Monthly User Signups Data",
+                              :subCaption => "By Activation",
+                              :animation => 1,
+                              :xAxisName => "Months",
+                              :yAxisName => "Number of Signups"
+                            }
+                  },
+                  list_to_loop
+        )
+
+  end
+
+  def daily_signups_by_activation
+    add_breadcrumb "User", "/user/signups_by_activation"
+    @monthly_data = User.data_by_activation(params[:month])
+
+    @data_for_xml = {}
+    @monthly_data.each { |k,v |
+      # logger.debug( "k: #{k} , v: #{v}" )
+      # skip this cuisine
+      @data_for_xml [ k ] = {:key => k,
+        :value => v ,
+        :hover_text => "k",
+        :link => "/user/signup_details?date=",
+      }
+    }
+
+    list_to_loop = {   "Activated" => "7CFC00","Not Activated" => "FFA07A",  "Deleted" => "DC143C"}
+
+    @str_xml = UserController.generate_stacked_xml(
+        {:xmlData =>  @data_for_xml,
+         :chartConfigs => { 
+                              :caption => "Daily User Signups Data",
+                              :subCaption => "By Activation",
+                              :animation => 1,
+                              :xAxisName => "Months",
+                              :yAxisName => "Number of Signups"
+                            }
+                  },
+                  list_to_loop
+        )
+
+        render :template => "user/signups_by_activation"
+  end
   
+
+  def signups_by_type
+  add_breadcrumb "User", "/user/signups_by_user_type"
+  @monthly_data = User.data_by_user_type
+
+  @data_for_xml = {}
+  @monthly_data.each { |k,v |
+    # logger.debug( "k: #{k} , v: #{v}" )
+    # skip this cuisine
+    @data_for_xml [ k ] = {:key => k,
+      :value => v ,
+      :hover_text => "k",
+      :link => "/user/daily_signups_by_type?month=",
+    }
+  }
+
+  list_to_loop = {   "indiatimes" => "7CFC00", "facebook" => "FFA07A",  "timescity" => "DC143C"}
+
+  @str_xml = UserController.generate_stacked_xml(
+      {:xmlData =>  @data_for_xml,
+       :chartConfigs => { 
+                            :caption => "Monthly User Signups Data",
+                            :subCaption => "By User Type",
+                            :animation => 1,
+                            :xAxisName => "Months",
+                            :yAxisName => "Number of Signups"
+                          }
+                },
+                list_to_loop
+      )
+
+  end
+
+  def daily_signups_by_type
+  add_breadcrumb "User", "/user/signups_by_user_type"
+  @monthly_data = User.data_by_user_type(params[:month])
+
+  @data_for_xml = {}
+  @monthly_data.each { |k,v |
+    # logger.debug( "k: #{k} , v: #{v}" )
+    # skip this cuisine
+    @data_for_xml [ k ] = {:key => k,
+      :value => v ,
+      :hover_text => "k",
+      :link => "/user/signup_details?date=",
+    }
+  }
+
+  list_to_loop = {   "indiatimes" => "7CFC00", "facebook" => "FFA07A",  "timescity" => "DC143C"}
+
+  @str_xml = UserController.generate_stacked_xml(
+      {:xmlData =>  @data_for_xml,
+       :chartConfigs => { 
+                            :caption => "Daily User Signups Data",
+                            :subCaption => "By User Type",
+                            :animation => 1,
+                            :xAxisName => "Months",
+                            :yAxisName => "Number of Signups"
+                          }
+                },
+                list_to_loop
+      )
+      render :template => "user/signups_by_type"
+
+  end
+
   def signups_by_month
 
     add_breadcrumb "Monthly Signups", "/user/signups"
@@ -265,5 +396,52 @@ class UserController < ApplicationController
 	      )
 	      render :template => "user/user_signup_cumulative"
    end
+
+   def self.generate_stacked_xml (xml_config, list_to_loop)
+    
+     @chart_config =  nil
+     @chart_config =  DEFAULT_CHART_CONFIGS
+
+     xml_config[:chartConfigs].each do |k, v|
+       @chart_config[k] = v
+     end
+    
+     xml = Builder::XmlMarkup.new()
+     xml.graph(@chart_config) do
+
+     xml.categories() do
+       xml_config[:xmlData].each do  |xmlKey, xmlDataRow|
+
+         xml.category(:name => xmlKey)
+       end  
+          
+     end
+
+     list_to_loop.each do |value_name, color_to_use|
+     
+           xml.dataset(:seriesName => value_name , :color => color_to_use ) do
+             xml_config[:xmlData].each do  |xmlKey, xmlDataRow|
+             #logger.debug("Hi : ")
+             #logger.debug( xmlDataRow)
+             number = xmlDataRow[:value][value_name].nil? ? 0 : xmlDataRow[:value][value_name][:total]
+
+               xml.set(:value => number,
+                       :link => "#{xmlDataRow[:link]}#{xmlDataRow[:key]}"
+                       )
+             end  
+          
+           end
+    
+    end
+      
+
+     end
+
+     ret_val = xml
+     # ret_val = ret_val.gsub(/[']/, '\\\\\'')
+     return ret_val
+   end
+
+
 
 end
