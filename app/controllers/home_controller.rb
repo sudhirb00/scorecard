@@ -11,9 +11,4 @@ class HomeController < ApplicationController
   
   end
   
-  def xss_demo
-
-  end
-  
-  
 end
