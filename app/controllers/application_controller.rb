@@ -103,61 +103,6 @@ class ApplicationController < ActionController::Base
     return ret_val
   end
 
-  def self.generate_stacked_xml (xml_config)
-    
-    @chart_config =  nil
-    @chart_config =  DEFAULT_CHART_CONFIGS
-
-    xml_config[:chartConfigs].each do |k, v|
-      @chart_config[k] = v
-    end
-
-    
-    xml = Builder::XmlMarkup.new()
-    xml.graph(@chart_config) do
-
-    xml.categories() do
-      xml_config[:xmlData].each do  |xmlKey, xmlDataRow|
-
-        xml.category(:name => xmlKey)
-      end  
-          
-    end
-
-    xml.dataset(:seriesName => "Establishments", :color => "008040" ) do
-      xml_config[:xmlData].each do  |xmlKey, xmlDataRow|
-      #logger.debug("Hi : ")
-      #logger.debug( xmlDataRow)
-      number = xmlDataRow[:value]["Establishments"].nil? ? 0 : xmlDataRow[:value]["Establishments"][:total]
-
-        xml.set(:value => number,
-                :link => "#{xmlDataRow[:link]}#{xmlDataRow[:key]}"
-                )
-      end  
-          
-    end
-
- 
-    xml.dataset(:seriesName => "Movies", :color => "FFFF00") do
-      xml_config[:xmlData].each do  |xmlKey, xmlDataRow|
-      
-      number = xmlDataRow[:value]["Movies"].nil? ? 0 : xmlDataRow[:value]["Movies"][:total]
-        xml.set(:value => number,
-        :link => "#{xmlDataRow[:link]}#{xmlDataRow[:key]}"
-        )
-      end  
-          
-    end
-
-      
-
-    end
-
-    ret_val = xml
-    # ret_val = ret_val.gsub(/[']/, '\\\\\'')
-    return ret_val
-  end
-
 
   def self.format_xAxis(str)
       @parts = str.split("/");
