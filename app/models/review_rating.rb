@@ -4,7 +4,9 @@ class ReviewRating < ActiveRecord::Base
   self.primary_key = "rev_id"
   self.inheritance_column = nil
   default_scope :conditions =>  [ "rev_user_id != 0  and insertdate between '2010-01-01' and '2099-01-01' "]
-  
+  scope :created_on_date, lambda { |time|  {:conditions => ["date_format(insertdate, '%Y/%m/%d') = ?", time] } }
+
+   
 
   def self.monthly_data_by_type(no_seeders = false)
   
