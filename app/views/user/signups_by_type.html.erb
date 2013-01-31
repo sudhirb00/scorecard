@@ -1,70 +1,54 @@
 <% content_for :title, "Timescity Scorecard | #{params[:controller].titlecase} | #{params[:action].titlecase}" %>
 
 
-<div id="chartdiv" class="span9">
+<div id="chartdiv" class="span12">
   Timescity Chart.
 
 </div>     <!- end of chartdiv ->
 
-<div id="chart_data" class="span2">
+<div id="chart_data" class="span12">
   <table class="table table-striped">
     <thead>
     <tr>
-      <th>Duration</th>
-      <th>Indiatimes Count</th>
-      <th>Facebook Count</th>
-      <th>Timescity Count</th>
-    </tr>
-    </thead>
-    <tbody>
+		<th>&nbsp;</td>
+			
+	    <%	@data_for_xml.each do  |xmlKey, xmlDataRow| %>
+ 
+	    <%= raw "<th>#{xmlKey}</th>"%>
+ 
+		<% end %>
+         
+	 </tr> 
+ 
+   <%   @list_to_loop.each do |value_name, color_to_use| %>
+     
+   <tr>
+       <%= raw "<td>#{value_name}</td>" %>    
+	   
+       <%       @data_for_xml.each do  |xmlKey, xmlDataRow| 
+       logger.debug("Hi : ")
+       logger.debug(value_name)
+             logger.debug( xmlDataRow) 
+      
+	         number = xmlDataRow[:value][value_name].nil? ? 0 : xmlDataRow[:value][value_name][:total] %>
 
-	    <% a_count_total = 0 %>
-	    <% n_count_total = 0 %>
-	    <% d_count_total = 0 %>
-    <% @monthly_data.each { | k, v | %>
-        <tr>
-          <td>
-            <%= k.blank? ? 'N/A' : formatDate(k) %>
-          </td>
-          <td style="text-align: right;">
-		 <%   a_number = v["indiatimes"].nil? ? 0 : v["indiatimes"][:total] %>
-
-            <%= a_number %>
-            <% a_count_total += a_number %>
-          </td>
-          <td style="text-align: right;">
-	 		 <%   n_number = v["facebook"].nil? ? 0 : v["facebook"][:total] %>
-
-	             <%= n_number %>
-	             <% n_count_total += n_number %>
-          </td>
-
-          <td style="text-align: right;">
-	 		 <%   d_number = v["timescity"].nil? ? 0 : v["timescity"][:total] %>
-
-	             <%= d_number %>
-	             <% d_count_total += d_number %>
-          </td>
-
-        </tr>
-
-    <%  } %>
-    </tbody>
-    <thead>
-    <tr>
-      <th>Total</th>
-      <th style="text-align: right;"><%= a_count_total %></th>
-      <th style="text-align: right;"><%= n_count_total %></th>
-      <th style="text-align: right;"><%= d_count_total %></th>
-    </tr>
-    </thead>
-  </table>
-</div>
+			 <%= raw "<td>#{number}</td>" %>
+			 
+      <%       end %>
+	   
+	   <tr/>  
+          
+        <%   end %>
+    
+	   </table>
+	 
+	 
+	 </div>
 
 
 
 <script type="text/javascript">
-    var chart = new FusionCharts("/assets/fusionCharts/FCF_StackedColumn3D.swf", "ChartId", <%= PIE_CHARTS_WIDTH %>, <%= PIE_CHARTS_HEIGHT %>);
+    var chart = new FusionCharts("/assets/fusionCharts/FCF_StackedColumn3D.swf", "ChartId", <%= 800 %>, <%= 600 %>);
     chart.setDataXML('<%= raw @str_xml %>');
 
 
