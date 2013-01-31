@@ -40,9 +40,9 @@ class User < ActiveRecord::Base
   def self.data_by_user_type(query_month = nil)
 
     if query_month.nil?
-      sorted_data = select("user_id, user_type, created_date", )
+      sorted_data = select("user_id,  case when user_type = '' then 'unknown' else  lower(user_type) end as user_type , created_date", )
     else
-      sorted_data = select("user_id, user_type, created_date", ).created_in_month(query_month)
+      sorted_data = select("user_id,  case when user_type = '' then 'unknown' else  lower(user_type) end as user_type, created_date", ).created_in_month(query_month)
     end
     total_data = {}
     sorted_data.each do | s_data |
@@ -55,10 +55,15 @@ class User < ActiveRecord::Base
         period = date.strftime("%Y/%m/%d")
       end  
       # logger.debug(month)
+    if s_data.user_type == ""
+      disp_user_type = "Unknown"
+    else
+      disp_user_type = s_data.user_type
+    end
     total_data[period] ||= {}
-    total_data[period]["#{s_data.user_type}"]||= {}
-    total_data[period]["#{s_data.user_type}"][:total] ||= 0
-    total_data[period]["#{s_data.user_type}"][:total] += 1
+    total_data[period]["#{disp_user_type}"]||= {}
+    total_data[period]["#{disp_user_type}"][:total] ||= 0
+    total_data[period]["#{disp_user_type}"][:total] += 1
      
     end
 
