@@ -102,7 +102,18 @@ class UserController < ApplicationController
     }
   }
 
-  list_to_loop = {   "indiatimes" => "7CFC00", "facebook" => "FFA07A",  "timescity" => "DC143C"}
+  users = User.select("case when user_type = '' then 'unknown' else lower(user_type) end as user_type").uniq
+  @list_to_loop = {}
+  prng = Random.new(1234)
+  golden_ratio_conjugate = 0.618033988749895
+  h = prng.rand # use random start value
+  users.each { |user|
+
+      h += golden_ratio_conjugate
+      h %= 1
+      @list_to_loop[user.user_type] = ApplicationController.hsv_to_rgb(h , 0.5, 0.95) 
+      
+  }
 
   @str_xml = UserController.generate_stacked_xml(
       {:xmlData =>  @data_for_xml,
@@ -114,13 +125,16 @@ class UserController < ApplicationController
                             :yAxisName => "Number of Signups"
                           }
                 },
-                list_to_loop
+                @list_to_loop
       )
 
+  
   end
 
   def daily_signups_by_type
-  add_breadcrumb "User", "/user/signups_by_user_type"
+  
+  add_breadcrumb "Signups by Type", "/user/signups_by_type"
+  add_breadcrumb "Daily Signups by Type", "/user/signups_by_type"
   @monthly_data = User.data_by_user_type(params[:month])
 
   @data_for_xml = {}
@@ -134,7 +148,18 @@ class UserController < ApplicationController
     }
   }
 
-  list_to_loop = {   "indiatimes" => "7CFC00", "facebook" => "FFA07A",  "timescity" => "DC143C"}
+  users = User.select("case when user_type = '' then 'unknown' else lower(user_type) end as user_type").uniq
+  @list_to_loop = {}
+  prng = Random.new(1234)
+  golden_ratio_conjugate = 0.618033988749895
+  h = prng.rand # use random start value
+  users.each { |user|
+
+      h += golden_ratio_conjugate
+      h %= 1
+      @list_to_loop[user.user_type] = ApplicationController.hsv_to_rgb(h , 0.5, 0.95) 
+      
+  }
 
   @str_xml = UserController.generate_stacked_xml(
       {:xmlData =>  @data_for_xml,
@@ -146,7 +171,7 @@ class UserController < ApplicationController
                             :yAxisName => "Number of Signups"
                           }
                 },
-                list_to_loop
+                @list_to_loop
       )
       render :template => "user/signups_by_type"
 
