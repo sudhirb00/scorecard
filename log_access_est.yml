@@ -1,0 +1,801 @@
+---
+'54062':
+  :entity_id: 54062
+  :entity_name: Haute Peppers
+  :est_guid: /ahmedabad/s-g-highway/desserts-restaurant-haute-peppers/54062
+  :entity_type: est
+  :count_entity_id: 92
+  :virtual_no: 0
+  :is_paid: 0
+'67540':
+  :entity_id: 67540
+  :entity_name: Whisky 111
+  :est_guid: /chandigarh/sector-35-b/bar-whisky-111/67540
+  :entity_type: est
+  :count_entity_id: 73
+  :virtual_no: 0
+  :is_paid: 0
+'54284':
+  :entity_id: 54284
+  :entity_name: Dum Pukht
+  :est_guid: /delhi/chanakyapuri/north-indian-restaurant-dum-pukht/54284
+  :entity_type: est
+  :count_entity_id: 32
+  :virtual_no: '8130394131'
+  :is_paid: 0
+'59874':
+  :entity_id: 59874
+  :entity_name: Shiro
+  :est_guid: /delhi/chanakyapuri/oriental-restaurant-shiro/59874
+  :entity_type: est
+  :count_entity_id: 31
+  :virtual_no: '8130394379'
+  :is_paid: 0
+'82909':
+  :entity_id: 82909
+  :entity_name: Mainland China
+  :est_guid: /mumbai/kandivali-east/chinese-restaurant-mainland-china/82909
+  :entity_type: est
+  :count_entity_id: 29
+  :virtual_no: 0
+  :is_paid: 0
+'62469':
+  :entity_id: 62469
+  :entity_name: Orient Express
+  :est_guid: /delhi/chanakyapuri/european-restaurant-orient-express/62469
+  :entity_type: est
+  :count_entity_id: 24
+  :virtual_no: 0
+  :is_paid: 0
+'64364':
+  :entity_id: 64364
+  :entity_name: Smoke House Room
+  :est_guid: /delhi/mehrauli/european-restrobar-smoke-house-room/64364
+  :entity_type: est
+  :count_entity_id: 23
+  :virtual_no: '8130394392'
+  :is_paid: 0
+'66183':
+  :entity_id: 66183
+  :entity_name: Almond Flower
+  :est_guid: /mumbai/andheri-w/north-indian-restrobar-almond-flower/66183
+  :entity_type: est
+  :count_entity_id: 23
+  :virtual_no: 0
+  :is_paid: 0
+'55929':
+  :entity_id: 55929
+  :entity_name: The Blue Bar
+  :est_guid: /delhi/chanakyapuri/bar-the-blue-bar/55929
+  :entity_type: est
+  :count_entity_id: 20
+  :virtual_no: '8130394440'
+  :is_paid: 0
+'62384':
+  :entity_id: 62384
+  :entity_name: Striker Pub & Brewery
+  :est_guid: /delhi/golf-course-road-gurgaon/drinks-restrobar-striker-pub-and-brewery/62384
+  :entity_type: est
+  :count_entity_id: 19
+  :virtual_no: '8130394194'
+  :is_paid: 1
+'53911':
+  :entity_id: 53911
+  :entity_name: Diva The Italian
+  :est_guid: /delhi/greater-kailash-ii/italian-restaurant-diva-the-italian/53911
+  :entity_type: est
+  :count_entity_id: 19
+  :virtual_no: '8130394126'
+  :is_paid: 0
+'55744':
+  :entity_id: 55744
+  :entity_name: Yo! China
+  :est_guid: /delhi/rajouri-garden/chinese-restaurant-yo-china/55744
+  :entity_type: est
+  :count_entity_id: 17
+  :virtual_no: '8130394522'
+  :is_paid: 0
+'78822':
+  :entity_id: 78822
+  :entity_name: The Final Frontier
+  :est_guid: /delhi/dwarka-sector-4/awadhi-restaurant-the-final-frontier/78822
+  :entity_type: est
+  :count_entity_id: 15
+  :virtual_no: 0
+  :is_paid: 0
+'53615':
+  :entity_id: 53615
+  :entity_name: Copper Chimney
+  :est_guid: /mumbai/lower-parel/north-indian-restaurant-copper-chimney/53615
+  :entity_type: est
+  :count_entity_id: 15
+  :virtual_no: '9022952440'
+  :is_paid: 0
+'54884':
+  :entity_id: 54884
+  :entity_name: The China Kitchen
+  :est_guid: /delhi/bhikaji-cama-place/chinese-restrobar-the-china-kitchen/54884
+  :entity_type: est
+  :count_entity_id: 14
+  :virtual_no: 0
+  :is_paid: 0
+'54421':
+  :entity_id: 54421
+  :entity_name: Bukhara
+  :est_guid: /delhi/chanakyapuri/north-indian-restaurant-bukhara/54421
+  :entity_type: est
+  :count_entity_id: 13
+  :virtual_no: '8130394065'
+  :is_paid: 0
+'62392':
+  :entity_id: 62392
+  :entity_name: Sky Bar
+  :est_guid: /delhi/vasant-kunj/bar-sky-bar/62392
+  :entity_type: est
+  :count_entity_id: 13
+  :virtual_no: 0
+  :is_paid: 0
+'62321':
+  :entity_id: 62321
+  :entity_name: The Final Frontier
+  :est_guid: /delhi/greater-kailash-ii/indian-restaurant-the-final-frontier/62321
+  :entity_type: est
+  :count_entity_id: 12
+  :virtual_no: '8130394451'
+  :is_paid: 0
+'62213':
+  :entity_id: 62213
+  :entity_name: Fantasie Fine Chocolates
+  :est_guid: /mumbai/bandra-w/desserts-restaurant-fantasie-fine-chocolates/62213
+  :entity_type: est
+  :count_entity_id: 11
+  :virtual_no: 0
+  :is_paid: 0
+'52597':
+  :entity_id: 52597
+  :entity_name: Aurus
+  :est_guid: /mumbai/santacruz-w/european-restrobar-aurus/52597
+  :entity_type: est
+  :count_entity_id: 10
+  :virtual_no: '9022959700'
+  :is_paid: 0
+'62433':
+  :entity_id: 62433
+  :entity_name: Le Cirque
+  :est_guid: /delhi/chanakyapuri/europeancontinental-restrobar-le-cirque/62433
+  :entity_type: est
+  :count_entity_id: 9
+  :virtual_no: '8130394216'
+  :is_paid: 0
+'58520':
+  :entity_id: 58520
+  :entity_name: Nawab's - The Taste Of Lucknow
+  :est_guid: /delhi/indirapuram/mughlai-tandoori-restaurant-nawabs-the-taste-of-lucknow/58520
+  :entity_type: est
+  :count_entity_id: 9
+  :virtual_no: 0
+  :is_paid: 0
+'54131':
+  :entity_id: 54131
+  :entity_name: Pizza Hut
+  :est_guid: /delhi/sector-15-a-faridabad/pizza-restaurant-pizza-hut/54131
+  :entity_type: est
+  :count_entity_id: 9
+  :virtual_no: 0
+  :is_paid: 0
+'82175':
+  :entity_id: 82175
+  :entity_name: Soi Thai
+  :est_guid: /delhi/basant-lok/thai-restaurant-soi-thai/82175
+  :entity_type: est
+  :count_entity_id: 9
+  :virtual_no: 0
+  :is_paid: 0
+'55609':
+  :entity_id: 55609
+  :entity_name: Set'z
+  :est_guid: /delhi/vasant-kunj/restrobar-setz/55609
+  :entity_type: est
+  :count_entity_id: 9
+  :virtual_no: '8130394374'
+  :is_paid: 0
+'55981':
+  :entity_id: 55981
+  :entity_name: Flluid
+  :est_guid: /delhi/sector-18/bar-flluid/55981
+  :entity_type: est
+  :count_entity_id: 9
+  :virtual_no: 0
+  :is_paid: 0
+'53034':
+  :entity_id: 53034
+  :entity_name: Golden Dragon
+  :est_guid: /mumbai/apollo-bunder/chinese-restaurant-golden-dragon/53034
+  :entity_type: est
+  :count_entity_id: 8
+  :virtual_no: 0
+  :is_paid: 0
+'77919':
+  :entity_id: 77919
+  :entity_name: Bikanervala
+  :est_guid: /delhi/lajpat-nagar-ii/mithai-restaurant-bikanervala/77919
+  :entity_type: est
+  :count_entity_id: 8
+  :virtual_no: 0
+  :is_paid: 0
+'69219':
+  :entity_id: 69219
+  :entity_name: Blue Frog
+  :est_guid: /delhi/mehrauli/bar-blue-frog/69219
+  :entity_type: est
+  :count_entity_id: 8
+  :virtual_no: '8130394127'
+  :is_paid: 0
+'74864':
+  :entity_id: 74864
+  :entity_name: The Chocolate Room
+  :est_guid: /delhi/saket/desserts-restaurant-the-chocolate-room/74864
+  :entity_type: est
+  :count_entity_id: 8
+  :virtual_no: 0
+  :is_paid: 0
+'61840':
+  :entity_id: 61840
+  :entity_name: Hyderabad Spice
+  :est_guid: /mumbai/andheri-w/indian-restaurant-hyderabad-spice/61840
+  :entity_type: est
+  :count_entity_id: 6
+  :virtual_no: 0
+  :is_paid: 0
+'54350':
+  :entity_id: 54350
+  :entity_name: Haldiram's
+  :est_guid: /delhi/mathura-road/mithai-restaurant-haldirams/54350
+  :entity_type: est
+  :count_entity_id: 6
+  :virtual_no: 0
+  :is_paid: 0
+'62061':
+  :entity_id: 62061
+  :entity_name: Jynxxx
+  :est_guid: /delhi/nehru-place/bar-jynxxx/62061
+  :entity_type: est
+  :count_entity_id: 6
+  :virtual_no: '8130394179'
+  :is_paid: 0
+'62966':
+  :entity_id: 62966
+  :entity_name: Knight
+  :est_guid: /delhi/connaught-place/bar-knight/62966
+  :entity_type: est
+  :count_entity_id: 6
+  :virtual_no: '8130394197'
+  :is_paid: 0
+'69892':
+  :entity_id: 69892
+  :entity_name: Cheelizza
+  :est_guid: /mumbai/bhayandar/fast-food-restaurant-cheelizza/69892
+  :entity_type: est
+  :count_entity_id: 6
+  :virtual_no: 0
+  :is_paid: 0
+'55752':
+  :entity_id: 55752
+  :entity_name: Agni
+  :est_guid: /delhi/connaught-place/bar-agni/55752
+  :entity_type: est
+  :count_entity_id: 6
+  :virtual_no: '8130394014'
+  :is_paid: 0
+'54599':
+  :entity_id: 54599
+  :entity_name: Jing
+  :est_guid: /delhi/sector-54-gurgaon/chinese-restrobar-jing/54599
+  :entity_type: est
+  :count_entity_id: 6
+  :virtual_no: '8130394177'
+  :is_paid: 0
+'62230':
+  :entity_id: 62230
+  :entity_name: Desiree - The Cake Studio
+  :est_guid: /mumbai/bandra-w/desserts-restaurant-desiree-the-cake-studio/62230
+  :entity_type: est
+  :count_entity_id: 6
+  :virtual_no: 0
+  :is_paid: 0
+'55355':
+  :entity_id: 55355
+  :entity_name: The Monk
+  :est_guid: /delhi/sector-15-gurgaon/oriental-restaurant-the-monk/55355
+  :entity_type: est
+  :count_entity_id: 5
+  :virtual_no: 0
+  :is_paid: 0
+'55680':
+  :entity_id: 55680
+  :entity_name: Wasabi By Morimoto
+  :est_guid: /delhi/mansingh-road/japanese-restaurant-wasabi-by-morimoto/55680
+  :entity_type: est
+  :count_entity_id: 5
+  :virtual_no: '8130394508'
+  :is_paid: 0
+'76384':
+  :entity_id: 76384
+  :entity_name: Lemp Brewpub and Kitchen
+  :est_guid: /delhi/sector-30-gurgaon/indian-restrobar-lemp-brewpub-and-kitchen/76384
+  :entity_type: est
+  :count_entity_id: 5
+  :virtual_no: '8130394542'
+  :is_paid: 0
+'55373':
+  :entity_id: 55373
+  :entity_name: Al - Javed Kabab (Khan Market Wale)
+  :est_guid: /delhi/defence-colony/snacks-restaurant-al-javed-kabab-khan-market-wale/55373
+  :entity_type: est
+  :count_entity_id: 5
+  :virtual_no: 0
+  :is_paid: 0
+'83944':
+  :entity_id: 83944
+  :entity_name: B-Bar
+  :est_guid: /delhi/saket/japanese-restrobar-b-bar/83944
+  :entity_type: est
+  :count_entity_id: 5
+  :virtual_no: 0
+  :is_paid: 0
+'52383':
+  :entity_id: 52383
+  :entity_name: Beach House
+  :est_guid: /goa/bardez/goan-restaurant-beach-house/52383
+  :entity_type: est
+  :count_entity_id: 4
+  :virtual_no: 0
+  :is_paid: 0
+'52974':
+  :entity_id: 52974
+  :entity_name: Thai Pavilion
+  :est_guid: /mumbai/cuffe-parade/thai-restaurant-thai-pavilion/52974
+  :entity_type: est
+  :count_entity_id: 4
+  :virtual_no: 0
+  :is_paid: 0
+'52854':
+  :entity_id: 52854
+  :entity_name: Dakshin
+  :est_guid: /mumbai/andheri-east/south-indian-restaurant-dakshin/52854
+  :entity_type: est
+  :count_entity_id: 4
+  :virtual_no: 0
+  :is_paid: 0
+'84226':
+  :entity_id: 84226
+  :entity_name: Pizza Hut
+  :est_guid: /chandigarh/panchkula/pizza-restaurant-pizza-hut/84226
+  :entity_type: est
+  :count_entity_id: 4
+  :virtual_no: 0
+  :is_paid: 0
+'68863':
+  :entity_id: 68863
+  :entity_name: Sura Vie
+  :est_guid: /delhi/connaught-place/multi-cuisine-restrobar-sura-vie/68863
+  :entity_type: est
+  :count_entity_id: 4
+  :virtual_no: '8130394402'
+  :is_paid: 1
+'59643':
+  :entity_id: 59643
+  :entity_name: Take Away
+  :est_guid: /delhi/malviya-nagar/cajun-restaurant-take-away/59643
+  :entity_type: est
+  :count_entity_id: 4
+  :virtual_no: 0
+  :is_paid: 0
+'84921':
+  :entity_id: 84921
+  :entity_name: Cocaine
+  :est_guid: /delhi/greater-kailash-i/tex-mex-restrobar-cocaine/84921
+  :entity_type: est
+  :count_entity_id: 4
+  :virtual_no: 0
+  :is_paid: 0
+'54954':
+  :entity_id: 54954
+  :entity_name: Darbar-e-Awadh
+  :est_guid: /delhi/aurobindo-marg/awadhi-restaurant-darbar-e-awadh/54954
+  :entity_type: est
+  :count_entity_id: 4
+  :virtual_no: 0
+  :is_paid: 0
+'53139':
+  :entity_id: 53139
+  :entity_name: Pan Asian
+  :est_guid: /mumbai/andheri/bar-pan-asian/53139
+  :entity_type: est
+  :count_entity_id: 4
+  :virtual_no: 0
+  :is_paid: 0
+'55942':
+  :entity_id: 55942
+  :entity_name: Magique
+  :est_guid: /delhi/saket/bar-magique/55942
+  :entity_type: est
+  :count_entity_id: 4
+  :virtual_no: '8130394224'
+  :is_paid: 0
+'84676':
+  :entity_id: 84676
+  :entity_name: Pizza Hut
+  :est_guid: /chandigarh/panchkula/pizza-restaurant-pizza-hut/84676
+  :entity_type: est
+  :count_entity_id: 4
+  :virtual_no: 0
+  :is_paid: 0
+'53032':
+  :entity_id: 53032
+  :entity_name: Shree Thaker Bhojanalay
+  :est_guid: /mumbai/kalbadevi/gujarati-restaurant-shree-thaker-bhojanalay/53032
+  :entity_type: est
+  :count_entity_id: 4
+  :virtual_no: '9022904197'
+  :is_paid: 0
+'58869':
+  :entity_id: 58869
+  :entity_name: ! "Shanti Milk & Sweets \t"
+  :est_guid: /delhi/sector-27-noida/desserts-restaurant-shanti-milk-and-sweets/58869
+  :entity_type: est
+  :count_entity_id: 4
+  :virtual_no: 0
+  :is_paid: 0
+'53925':
+  :entity_id: 53925
+  :entity_name: Bikanervala
+  :est_guid: /delhi/chandni-chowk/mithai-restaurant-bikanervala/53925
+  :entity_type: est
+  :count_entity_id: 4
+  :virtual_no: 0
+  :is_paid: 0
+'58608':
+  :entity_id: 58608
+  :entity_name: Bakes & Byte
+  :est_guid: /delhi/sarojini-nagar/pizza-restaurant-bakes-and-byte/58608
+  :entity_type: est
+  :count_entity_id: 4
+  :virtual_no: 0
+  :is_paid: 0
+'79664':
+  :entity_id: 79664
+  :entity_name: Satyanaryan Maharaj
+  :est_guid: /mumbai/andheri-w/mithai-restaurant-satyanaryan-maharaj/79664
+  :entity_type: est
+  :count_entity_id: 4
+  :virtual_no: 0
+  :is_paid: 0
+'79115':
+  :entity_id: 79115
+  :entity_name: Sweet Bengal
+  :est_guid: /mumbai/vile-parle-e/mithai-restaurant-sweet-bengal/79115
+  :entity_type: est
+  :count_entity_id: 3
+  :virtual_no: 0
+  :is_paid: 0
+'65880':
+  :entity_id: 65880
+  :entity_name: Barista Lavazza
+  :est_guid: /chandigarh/sector-35-c/chinese-restaurant-barista-lavazza/65880
+  :entity_type: est
+  :count_entity_id: 3
+  :virtual_no: 0
+  :is_paid: 0
+'84673':
+  :entity_id: 84673
+  :entity_name: Pizza Hut
+  :est_guid: /chandigarh/sector-35-c/pizza-restaurant-pizza-hut/84673
+  :entity_type: est
+  :count_entity_id: 3
+  :virtual_no: 0
+  :is_paid: 0
+'54120':
+  :entity_id: 54120
+  :entity_name: Bamboo Shoots
+  :est_guid: /delhi/sector-18/indonesian-restrobar-bamboo-shoots/54120
+  :entity_type: est
+  :count_entity_id: 3
+  :virtual_no: 0
+  :is_paid: 0
+'55810':
+  :entity_id: 55810
+  :entity_name: The Kylin Experience
+  :est_guid: /delhi/vasant-vihar/bar-the-kylin-experience/55810
+  :entity_type: est
+  :count_entity_id: 3
+  :virtual_no: '8130394206'
+  :is_paid: 0
+'85366':
+  :entity_id: 85366
+  :entity_name: Cafe Jiji
+  :est_guid: /delhi/sector-15-gurgaon/italian-restrobar-cafe-jiji/85366
+  :entity_type: est
+  :count_entity_id: 3
+  :virtual_no: 0
+  :is_paid: 0
+'56201':
+  :entity_id: 56201
+  :entity_name: Island Bar
+  :est_guid: /delhi/connaught-place/bar-island-bar/56201
+  :entity_type: est
+  :count_entity_id: 3
+  :virtual_no: '8130394169'
+  :is_paid: 0
+'69709':
+  :entity_id: 69709
+  :entity_name: Cheelizza
+  :est_guid: /mumbai/dahisar/fast-food-restaurant-cheelizza/69709
+  :entity_type: est
+  :count_entity_id: 3
+  :virtual_no: 0
+  :is_paid: 0
+'53604':
+  :entity_id: 53604
+  :entity_name: Oh! Calcutta
+  :est_guid: /mumbai/andheri-w/bengali-restrobar-oh-calcutta/53604
+  :entity_type: est
+  :count_entity_id: 3
+  :virtual_no: '9022921589'
+  :is_paid: 0
+'55594':
+  :entity_id: 55594
+  :entity_name: Swagath
+  :est_guid: /delhi/defence-colony/coastal-restrobar-swagath/55594
+  :entity_type: est
+  :count_entity_id: 3
+  :virtual_no: '8130394411'
+  :is_paid: 0
+'56043':
+  :entity_id: 56043
+  :entity_name: Delhi Golf Club
+  :est_guid: /delhi/lodhi-road/bar-delhi-golf-club/56043
+  :entity_type: est
+  :count_entity_id: 3
+  :virtual_no: 0
+  :is_paid: 0
+'84831':
+  :entity_id: 84831
+  :entity_name: The Piano Man Art Cafe
+  :est_guid: /delhi/vasant-vihar/american-restaurant-the-piano-man-art-cafe/84831
+  :entity_type: est
+  :count_entity_id: 3
+  :virtual_no: 0
+  :is_paid: 0
+'52402':
+  :entity_id: 52402
+  :entity_name: Club Fresh
+  :est_guid: /goa/pernem/pan-asian-restaurant-club-fresh/52402
+  :entity_type: est
+  :count_entity_id: 3
+  :virtual_no: 0
+  :is_paid: 0
+'54123':
+  :entity_id: 54123
+  :entity_name: Blue Ginger
+  :est_guid: /delhi/chanakyapuri/vietnamese-restaurant-blue-ginger/54123
+  :entity_type: est
+  :count_entity_id: 3
+  :virtual_no: '8130394059'
+  :is_paid: 0
+'72908':
+  :entity_id: 72908
+  :entity_name: Nostradamus
+  :est_guid: /delhi/mehrauli-gurgoan-road/bar-nostradamus/72908
+  :entity_type: est
+  :count_entity_id: 3
+  :virtual_no: 0
+  :is_paid: 0
+'52930':
+  :entity_id: 52930
+  :entity_name: Green Jade Oriental Lounge & Bar
+  :est_guid: /mumbai/andheri/bar-green-jade-oriental-lounge-and-bar/52930
+  :entity_type: est
+  :count_entity_id: 3
+  :virtual_no: '9022991008'
+  :is_paid: 0
+'55196':
+  :entity_id: 55196
+  :entity_name: Delhi Spice
+  :est_guid: /delhi/pitampura/north-indian-restrobar-delhi-spice/55196
+  :entity_type: est
+  :count_entity_id: 3
+  :virtual_no: 0
+  :is_paid: 0
+'84407':
+  :entity_id: 84407
+  :entity_name: 100 % Rock
+  :est_guid: /delhi/vasant-kunj/bar-100-rock/84407
+  :entity_type: est
+  :count_entity_id: 3
+  :virtual_no: 0
+  :is_paid: 0
+'64367':
+  :entity_id: 64367
+  :entity_name: Haagen - Dazs
+  :est_guid: /mumbai/goregaon-e/desserts-restaurant-haagen-dazs/64367
+  :entity_type: est
+  :count_entity_id: 3
+  :virtual_no: 0
+  :is_paid: 0
+'55331':
+  :entity_id: 55331
+  :entity_name: Spice Circle
+  :est_guid: /delhi/sector-25-a-noida/chinese-restaurant-spice-circle/55331
+  :entity_type: est
+  :count_entity_id: 3
+  :virtual_no: 0
+  :is_paid: 0
+'83775':
+  :entity_id: 83775
+  :entity_name: The Beer Cafe
+  :est_guid: /delhi/connaught-place/indian-restrobar-the-beer-cafe/83775
+  :entity_type: est
+  :count_entity_id: 3
+  :virtual_no: 0
+  :is_paid: 0
+'52516':
+  :entity_id: 52516
+  :entity_name: 180 Degrees
+  :est_guid: /mumbai/goregaon/chinese-restaurant-180-degrees/52516
+  :entity_type: est
+  :count_entity_id: 3
+  :virtual_no: '9022932313'
+  :is_paid: 0
+'53534':
+  :entity_id: 53534
+  :entity_name: Tote
+  :est_guid: /mumbai/mahalaxmi/bar-tote/53534
+  :entity_type: est
+  :count_entity_id: 3
+  :virtual_no: '9022985471'
+  :is_paid: 0
+'65876':
+  :entity_id: 65876
+  :entity_name: Barista Lavazza
+  :est_guid: /chandigarh/sector-17-c/tea-coffee-restaurant-barista-lavazza/65876
+  :entity_type: est
+  :count_entity_id: 3
+  :virtual_no: 0
+  :is_paid: 0
+'67281':
+  :entity_id: 67281
+  :entity_name: Miro Lounge
+  :est_guid: /mumbai/andheri-w/bar-miro-lounge/67281
+  :entity_type: est
+  :count_entity_id: 3
+  :virtual_no: 0
+  :is_paid: 0
+'52786':
+  :entity_id: 52786
+  :entity_name: China Garden
+  :est_guid: /mumbai/khar/chinese-restrobar-china-garden/52786
+  :entity_type: est
+  :count_entity_id: 3
+  :virtual_no: 0
+  :is_paid: 0
+'77559':
+  :entity_id: 77559
+  :entity_name: Mission RDX
+  :est_guid: /delhi/malviya-nagar/chinese-restrobar-mission-rdx/77559
+  :entity_type: est
+  :count_entity_id: 2
+  :virtual_no: 0
+  :is_paid: 0
+'82922':
+  :entity_id: 82922
+  :entity_name: Spice Court Bar & Restaurant
+  :est_guid: /delhi/dwarka-sector-5/indian-restrobar-spice-court-bar-and-restaurant/82922
+  :entity_type: est
+  :count_entity_id: 2
+  :virtual_no: 0
+  :is_paid: 0
+'84700':
+  :entity_id: 84700
+  :entity_name: Booze
+  :est_guid: /delhi/defence-colony/bar-booze/84700
+  :entity_type: est
+  :count_entity_id: 2
+  :virtual_no: 0
+  :is_paid: 0
+'53974':
+  :entity_id: 53974
+  :entity_name: Domino's Pizza
+  :est_guid: /delhi/greater-kailash-ii/pizza-restaurant-dominos-pizza/53974
+  :entity_type: est
+  :count_entity_id: 2
+  :virtual_no: 0
+  :is_paid: 0
+'58935':
+  :entity_id: 58935
+  :entity_name: Roll Away
+  :est_guid: /delhi/sector-25-a-noida/chinese-restaurant-roll-away/58935
+  :entity_type: est
+  :count_entity_id: 2
+  :virtual_no: 0
+  :is_paid: 0
+'76964':
+  :entity_id: 76964
+  :entity_name: Beijing Bites
+  :est_guid: /bengaluru/btm-layout/chinese-restaurant-beijing-bites/76964
+  :entity_type: est
+  :count_entity_id: 2
+  :virtual_no: 0
+  :is_paid: 0
+'82505':
+  :entity_id: 82505
+  :entity_name: Rhino
+  :est_guid: /delhi/golf-course-road-gurgaon/european-restrobar-rhino/82505
+  :entity_type: est
+  :count_entity_id: 2
+  :virtual_no: 0
+  :is_paid: 0
+'53947':
+  :entity_id: 53947
+  :entity_name: Bikanervala
+  :est_guid: /delhi/rajouri-garden/mithai-restaurant-bikanervala/53947
+  :entity_type: est
+  :count_entity_id: 2
+  :virtual_no: 0
+  :is_paid: 0
+'58860':
+  :entity_id: 58860
+  :entity_name: Gourmet Shoppe
+  :est_guid: /delhi/dr-zakir-hussain-marg/desserts-restaurant-gourmet-shoppe/58860
+  :entity_type: est
+  :count_entity_id: 2
+  :virtual_no: 0
+  :is_paid: 0
+'65762':
+  :entity_id: 65762
+  :entity_name: Pizza Hut
+  :est_guid: /chandigarh/sector-26/pizza-restaurant-pizza-hut/65762
+  :entity_type: est
+  :count_entity_id: 2
+  :virtual_no: 0
+  :is_paid: 0
+'84470':
+  :entity_id: 84470
+  :entity_name: Barbeque Nation
+  :est_guid: /delhi/vivek-vihar/bar-be-que-restaurant-barbeque-nation/84470
+  :entity_type: est
+  :count_entity_id: 2
+  :virtual_no: 0
+  :is_paid: 0
+'55145':
+  :entity_id: 55145
+  :entity_name: Pan Asian
+  :est_guid: /delhi/saket/japanese-restrobar-pan-asian/55145
+  :entity_type: est
+  :count_entity_id: 2
+  :virtual_no: 0
+  :is_paid: 0
+'67303':
+  :entity_id: 67303
+  :entity_name: Bahi
+  :est_guid: /delhi/dlf-city-phase-5/bar-bahi/67303
+  :entity_type: est
+  :count_entity_id: 2
+  :virtual_no: '8130394165'
+  :is_paid: 0
+'77823':
+  :entity_id: 77823
+  :entity_name: Kabab Corner
+  :est_guid: /delhi/malviya-nagar/chinese-restaurant-kabab-corner/77823
+  :entity_type: est
+  :count_entity_id: 2
+  :virtual_no: 0
+  :is_paid: 0
+'52812':
+  :entity_id: 52812
+  :entity_name: Cafe Coffee Day
+  :est_guid: /mumbai/worli/tea-coffee-restaurant-cafe-coffee-day/52812
+  :entity_type: est
+  :count_entity_id: 2
+  :virtual_no: 0
+  :is_paid: 0
