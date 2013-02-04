@@ -1,0 +1,49 @@
+<% content_for :title, "Timescity Scorecard | #{params[:controller].titlecase} | #{params[:action].titlecase}" %>      
+
+<h2>Top Listings (Paid/Not Paid) With/without virtual Numbers</h2>
+
+<div id="chart_data1" class="span5">
+  <table class="table table-striped" id="review_data">
+      <thead>
+    <tr>
+      <th style="text-align: center;">Entity Id</th>
+      <th style="text-align: center;">Entity Name</th>
+      <th style="text-align: center;">Entity Type</th>
+      <th style="text-align: center;"># of Page Views</th>
+      <th style="text-align: center;">Virtual Number</th>
+      <th style="text-align: center;">Is paid</th>
+    </tr>
+    </thead>
+    <tbody>
+      <%#= debug @log_access_est_hash %>
+     <%#=raw @log_access_est_hash %>
+     <% @log_access_est_hash.each { | k, v | 
+      #logger.debug("******** k:")
+      #logger.debug(k)
+      #logger.debug("**********v: ")
+      #logger.debug(v)
+       %>
+       <tr>
+          <td style="text-align: center;"><%= "#{v[:entity_id]}" %></td>
+          <td style="text-align: left;">          
+           <%= raw "<a href='http://timescity.com#{v[:est_guid]}' target='_blank'>#{v[:entity_name]}</a>" %>
+
+          </td>
+          <td style="text-align: center;"><%= "#{v[:entity_type]}" %></td>
+          <td style="text-align: center;"><%= "#{v[:count_entity_id]}" %></td>
+          <td style="text-align: center;"><%= "#{v[:virtual_no]}" %></td>
+          <td style="text-align: center;"><%= "#{PaidToText(v[:is_paid])}" %></td>
+        </tr>
+
+    <%  } %>
+    </tbody>
+  </table>
+</div>
+
+<script language="javascript">
+$(document).ready(function(){
+$('#review_data').dataTable({
+    "sDom": "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>"
+});
+});
+</script>
