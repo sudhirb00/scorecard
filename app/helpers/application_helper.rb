@@ -55,4 +55,9 @@ MONTHS = { 1 => "Jan", 2 => "Feb", 3 => "Mar", 4 => "Apr",
   return "<a href='http://timescity.com/delhi#{movie.guid}' alt='#{movie.cSynopsis}' title='#{movie.cSynopsis}'>#{label}</a>"
   end
 
+  def PaidToText(paid)
+
+    (paid == 0 ? "Not Paid" : "Paid")
+  end
+
 end
